@@ -1,0 +1,8 @@
+modeltype Workflow uses workflowengine('http://workflowengine/1.0');
+modeltype Petrinet uses petrinet('chalmers.se/cse/mde2014');
+
+transformation HelloWorld(in source:Workflow, out target:Petrinet);
+
+main() {
+	log("Hello World");
+}
