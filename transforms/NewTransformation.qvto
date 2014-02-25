@@ -5,4 +5,6 @@ transformation HelloWorld(in source:Workflow, out target:Petrinet);
 
 main() {
 	log("Hello World");
+	log("suuug");
+	
 }
