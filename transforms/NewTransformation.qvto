@@ -1,8 +1,75 @@
 modeltype Workflow uses workflowengine('http://workflowengine/1.0');
 modeltype Petrinet uses petrinet('chalmers.se/cse/mde2014');
 
-transformation HelloWorld(in source:Workflow, out target:Petrinet);
+transformation Workflow(in source:Workflow, out target:Petrinet);
 
 main() {
-	log("Hello World");
+	source.rootObjects()[Workflow::Case]->map case2petriNet();
 }
+
+
+mapping Workflow::Case::case2petriNet() : PetriNet {
+	name := "Petrinet";
+	arcs := self.map transition2arc(self.allInstances(Entity));
+}
+
+mapping Workflow::Case::transition2arc(in entities: Set(Entity)) : OrderedSet(Petrinet::Arc) {
+	
+	entities -> forEach(en1){
+		var tmpArc :  Arc := new Arc();
+		entities -> forEach(en2){
+			if en1 <> en2 then{
+				en1.outgoing_transitions -> forEach(tran1){
+					en2.incoming_transitions -> forEach(tran2){
+						if tran1 = tran2
+						then {
+							if en1.oclIsKindOf(Controller) 	then {
+								tmpArc.source := en1.oclAsType(Controller).map controller2tran();
+							} else if en1.oclIsKindOf(Task) then {
+								tmpArc.source := en1.oclAsType(Task).map task2place();
+							} else if en1.oclIsKindOf(StartPoint)  then {
+								tmpArc.source := en1.oclAsType(StartPoint).map sp2place();
+							} else {
+								tmpArc.source := en1.oclAsType(EndPoint).map ep2place();
+							}
+							endif endif endif;
+							
+							if en2.oclIsKindOf(Controller) 	then {
+								tmpArc.target := en2.oclAsType(Controller).map controller2tran();
+							} else if en2.oclIsKindOf(Task) then {
+								tmpArc.target := en2.oclAsType(Task).map task2place();
+							} else if en2.oclIsKindOf(StartPoint)  then {
+								tmpArc.target := en2.oclAsType(StartPoint).map sp2place();
+							} else {
+								tmpArc.target := en2.oclAsType(EndPoint).map ep2place();
+							}
+							endif endif endif;
+						}
+						endif
+					}
+				}
+			} endif
+		}
+	
+	}
+}
+
+mapping Controller:: controller2tran() : Petrinet::Transition {
+	result.name := self.entity_id;
+}
+
+mapping Task::task2place() : Petrinet::Place {
+	result.name := self.entity_id;
+}
+
+mapping StartPoint::sp2place() : Petrinet::Place {
+	result.name := self.entity_id;
+}
+
+mapping EndPoint::ep2place() : Petrinet::Place {
+	result.name := self.entity_id;
+}
+
+
+
+
