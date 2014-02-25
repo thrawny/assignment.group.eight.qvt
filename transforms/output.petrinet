@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:se.chalmers.cse.mde2014="chalmers.se/cse/mde2014">
-  <se.chalmers.cse.mde2014:PetriNet name="Petrinet"/>
-  <se.chalmers.cse.mde2014:Arc source="/2" target="/3"/>
-  <se.chalmers.cse.mde2014:Place name="SP"/>
-  <se.chalmers.cse.mde2014:Transition name="SEL1"/>
-  <se.chalmers.cse.mde2014:Arc/>
-  <se.chalmers.cse.mde2014:Arc source="/3" target="/7"/>
-  <se.chalmers.cse.mde2014:Place name="t2"/>
-  <se.chalmers.cse.mde2014:Place name="t3"/>
-  <se.chalmers.cse.mde2014:Arc source="/9" target="/10"/>
-  <se.chalmers.cse.mde2014:Transition name="FIFO1"/>
-  <se.chalmers.cse.mde2014:Place name="t1"/>
-  <se.chalmers.cse.mde2014:Arc source="/12" target="/13"/>
-  <se.chalmers.cse.mde2014:Transition name="SYNCH_1"/>
-  <se.chalmers.cse.mde2014:Place name="EP"/>
-  <se.chalmers.cse.mde2014:Arc source="/15" target="/17"/>
-  <se.chalmers.cse.mde2014:Transition name="FORK_1"/>
-  <se.chalmers.cse.mde2014:Place name="t4"/>
-  <se.chalmers.cse.mde2014:Place name="t5"/>
-  <se.chalmers.cse.mde2014:Arc source="/10" target="/15"/>
-  <se.chalmers.cse.mde2014:Arc source="/6" target="/9"/>
-  <se.chalmers.cse.mde2014:Arc source="/7" target="/9"/>
-  <se.chalmers.cse.mde2014:Arc source="/16" target="/12"/>
-  <se.chalmers.cse.mde2014:Arc source="/17" target="/12"/>
+  <se.chalmers.cse.mde2014:PetriNet name="GlobalNet"/>
+  <se.chalmers.cse.mde2014:Arc net="/0" source="/2" target="/3"/>
+  <se.chalmers.cse.mde2014:Place name="SP" net="/0"/>
+  <se.chalmers.cse.mde2014:Transition name="SEL1" net="/0"/>
+  <se.chalmers.cse.mde2014:Arc net="/0" source="/3" target="/5"/>
+  <se.chalmers.cse.mde2014:Place name="t2" net="/0"/>
+  <se.chalmers.cse.mde2014:Arc net="/0" source="/3" target="/7"/>
+  <se.chalmers.cse.mde2014:Place name="t3" net="/0"/>
+  <se.chalmers.cse.mde2014:Arc net="/0" source="/9" target="/10"/>
+  <se.chalmers.cse.mde2014:Transition name="FIFO1" net="/0"/>
+  <se.chalmers.cse.mde2014:Place name="t1" net="/0"/>
+  <se.chalmers.cse.mde2014:Arc net="/0" source="/12" target="/13"/>
+  <se.chalmers.cse.mde2014:Transition name="SYNCH_1" net="/0"/>
+  <se.chalmers.cse.mde2014:Place name="EP" net="/0"/>
+  <se.chalmers.cse.mde2014:Arc net="/0" source="/15" target="/16"/>
+  <se.chalmers.cse.mde2014:Transition name="FORK_1" net="/0"/>
+  <se.chalmers.cse.mde2014:Place name="t4" net="/0"/>
+  <se.chalmers.cse.mde2014:Arc net="/0" source="/15" target="/18"/>
+  <se.chalmers.cse.mde2014:Place name="t5" net="/0"/>
+  <se.chalmers.cse.mde2014:Arc net="/0" source="/10" target="/15"/>
+  <se.chalmers.cse.mde2014:Arc net="/0" source="/5" target="/9"/>
+  <se.chalmers.cse.mde2014:Arc net="/0" source="/7" target="/9"/>
+  <se.chalmers.cse.mde2014:Arc net="/0" source="/16" target="/12"/>
+  <se.chalmers.cse.mde2014:Arc net="/0" source="/18" target="/12"/>
 </xmi:XMI>

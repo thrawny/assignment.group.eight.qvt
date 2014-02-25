@@ -4,46 +4,46 @@ modeltype Petrinet uses petrinet('chalmers.se/cse/mde2014');
 transformation Workflow(in source:Workflow, out target:Petrinet);
 
 main() {
-	source.rootObjects()[Workflow::Case]->map case2petriNet();
+	var globalNet := source.rootObjects()[Workflow::Case]->map case2petriNet();
 }
-
 
 mapping Workflow::Case::case2petriNet() : PetriNet {
-	name := "Petrinet";
-	arcs := self.map transition2arc(self.allInstances(Entity));
+	name := "GlobalNet";
+	arcs := self.map transition2arc(self.allInstances(Entity), result);
 }
 
-mapping Workflow::Case::transition2arc(in entities: Set(Entity)) : OrderedSet(Petrinet::Arc) {
-	
+mapping Workflow::Case::transition2arc(in entities: Set(Entity), globalNet : PetriNet) : OrderedSet(Petrinet::Arc) {
 	entities -> forEach(en1){
-		var tmpArc :  Arc := new Arc();
 		entities -> forEach(en2){
 			if en1 <> en2 then{
 				en1.outgoing_transitions -> forEach(tran1){
 					en2.incoming_transitions -> forEach(tran2){
 						if tran1 = tran2
 						then {
+							var tmpArc :  Arc := new Arc();
+							tmpArc.net := globalNet;
 							if en1.oclIsKindOf(Controller) 	then {
-								tmpArc.source := en1.oclAsType(Controller).map controller2tran();
+								tmpArc.source := en1.oclAsType(Controller).map controller2tran(globalNet);
 							} else if en1.oclIsKindOf(Task) then {
-								tmpArc.source := en1.oclAsType(Task).map task2place();
+								tmpArc.source := en1.oclAsType(Task).map task2place(globalNet);
 							} else if en1.oclIsKindOf(StartPoint)  then {
-								tmpArc.source := en1.oclAsType(StartPoint).map sp2place();
+								tmpArc.source := en1.oclAsType(StartPoint).map sp2place(globalNet);
 							} else {
-								tmpArc.source := en1.oclAsType(EndPoint).map ep2place();
+								tmpArc.source := en1.oclAsType(EndPoint).map ep2place(globalNet);
 							}
 							endif endif endif;
 							
 							if en2.oclIsKindOf(Controller) 	then {
-								tmpArc.target := en2.oclAsType(Controller).map controller2tran();
+								tmpArc.target := en2.oclAsType(Controller).map controller2tran(globalNet);
 							} else if en2.oclIsKindOf(Task) then {
-								tmpArc.target := en2.oclAsType(Task).map task2place();
+								tmpArc.target := en2.oclAsType(Task).map task2place(globalNet);
 							} else if en2.oclIsKindOf(StartPoint)  then {
-								tmpArc.target := en2.oclAsType(StartPoint).map sp2place();
+								tmpArc.target := en2.oclAsType(StartPoint).map sp2place(globalNet);
 							} else {
-								tmpArc.target := en2.oclAsType(EndPoint).map ep2place();
+								tmpArc.target := en2.oclAsType(EndPoint).map ep2place(globalNet);
 							}
 							endif endif endif;
+							log("Source: "+en1.entity_id+" Target: "+en2.entity_id)
 						}
 						endif
 					}
@@ -54,19 +54,23 @@ mapping Workflow::Case::transition2arc(in entities: Set(Entity)) : OrderedSet(Pe
 	}
 }
 
-mapping Controller:: controller2tran() : Petrinet::Transition {
+mapping Controller:: controller2tran(in globalNet : PetriNet) : Petrinet::Transition {
 	result.name := self.entity_id;
+	result.net := globalNet;
 }
 
-mapping Task::task2place() : Petrinet::Place {
+mapping Task::task2place(in globalNet : PetriNet) : Petrinet::Place {
 	result.name := self.entity_id;
+	result.net := globalNet;
 }
 
-mapping StartPoint::sp2place() : Petrinet::Place {
+mapping StartPoint::sp2place(in globalNet : PetriNet) : Petrinet::Place {
 	result.name := self.entity_id;
+	result.net := globalNet;
 }
 
-mapping EndPoint::ep2place() : Petrinet::Place {
+mapping EndPoint::ep2place(in globalNet : PetriNet) : Petrinet::Place {
 	result.name := self.entity_id;
+	result.net := globalNet;
 }
 

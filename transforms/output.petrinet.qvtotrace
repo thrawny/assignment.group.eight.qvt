@@ -69,6 +69,11 @@
           </collection>
         </value>
       </parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
     </parameters>
     <result>
       <result kind="OUT" name="result" type="OrderedSet(Arc)">
@@ -87,7 +92,13 @@
         </value>
       </context>
     </context>
-    <parameters/>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
     <result>
       <result kind="OUT" name="result" type="Place">
         <value>
@@ -107,7 +118,13 @@
         </value>
       </context>
     </context>
-    <parameters/>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
     <result>
       <result kind="OUT" name="result" type="Transition">
         <value>
@@ -127,11 +144,17 @@
         </value>
       </context>
     </context>
-    <parameters/>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
     <result>
       <result kind="OUT" name="result" type="Place">
         <value>
-          <modelElement href="output.petrinet#/6"/>
+          <modelElement href="output.petrinet#/5"/>
         </value>
       </result>
     </result>
@@ -147,7 +170,13 @@
         </value>
       </context>
     </context>
-    <parameters/>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
     <result>
       <result kind="OUT" name="result" type="Place">
         <value>
@@ -167,7 +196,13 @@
         </value>
       </context>
     </context>
-    <parameters/>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
     <result>
       <result kind="OUT" name="result" type="Transition">
         <value>
@@ -187,7 +222,13 @@
         </value>
       </context>
     </context>
-    <parameters/>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
     <result>
       <result kind="OUT" name="result" type="Place">
         <value>
@@ -207,7 +248,13 @@
         </value>
       </context>
     </context>
-    <parameters/>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
     <result>
       <result kind="OUT" name="result" type="Transition">
         <value>
@@ -227,7 +274,13 @@
         </value>
       </context>
     </context>
-    <parameters/>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
     <result>
       <result kind="OUT" name="result" type="Place">
         <value>
@@ -247,7 +300,13 @@
         </value>
       </context>
     </context>
-    <parameters/>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
     <result>
       <result kind="OUT" name="result" type="Transition">
         <value>
@@ -267,7 +326,13 @@
         </value>
       </context>
     </context>
-    <parameters/>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
     <result>
       <result kind="OUT" name="result" type="Place">
         <value>
@@ -287,11 +352,17 @@
         </value>
       </context>
     </context>
-    <parameters/>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
     <result>
       <result kind="OUT" name="result" type="Place">
         <value>
-          <modelElement href="output.petrinet#/17"/>
+          <modelElement href="output.petrinet#/18"/>
         </value>
       </result>
     </result>
