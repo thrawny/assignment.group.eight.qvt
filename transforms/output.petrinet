@@ -9,13 +9,13 @@
   <se.chalmers.cse.mde2014:Arc net="/0" source="/3" target="/7"/>
   <se.chalmers.cse.mde2014:Place name="t3" net="/0"/>
   <se.chalmers.cse.mde2014:Arc net="/0" source="/9" target="/10"/>
-  <se.chalmers.cse.mde2014:Transition name="FIFO1" net="/0"/>
+  <se.chalmers.cse.mde2014:Transition name="FIFO1" net="/0" transition_type="FIFO"/>
   <se.chalmers.cse.mde2014:Place name="t1" net="/0"/>
   <se.chalmers.cse.mde2014:Arc net="/0" source="/12" target="/13"/>
-  <se.chalmers.cse.mde2014:Transition name="SYNCH_1" net="/0"/>
+  <se.chalmers.cse.mde2014:Transition name="SYNCH_1" net="/0" transition_type="Synchronization"/>
   <se.chalmers.cse.mde2014:Place name="EP" net="/0"/>
   <se.chalmers.cse.mde2014:Arc net="/0" source="/15" target="/16"/>
-  <se.chalmers.cse.mde2014:Transition name="FORK_1" net="/0"/>
+  <se.chalmers.cse.mde2014:Transition name="FORK_1" net="/0" transition_type="Fork"/>
   <se.chalmers.cse.mde2014:Place name="t4" net="/0"/>
   <se.chalmers.cse.mde2014:Arc net="/0" source="/15" target="/18"/>
   <se.chalmers.cse.mde2014:Place name="t5" net="/0"/>

@@ -3,6 +3,7 @@ modeltype Petrinet uses petrinet('chalmers.se/cse/mde2014');
 
 transformation Workflow(in source:Workflow, out target:Petrinet);
 
+
 main() {
 	var globalNet := source.rootObjects()[Workflow::Case]->map case2petriNet();
 }
@@ -57,6 +58,18 @@ mapping Workflow::Case::transition2arc(in entities: Set(Entity), globalNet : Pet
 mapping Controller:: controller2tran(in globalNet : PetriNet) : Petrinet::Transition {
 	result.name := self.entity_id;
 	result.net := globalNet;
+	if self.oclIsKindOf(Selection) 	then {
+		result.transition_type := petrinet::Type::Selection;
+	} else if self.oclIsKindOf(Synchronization) then {
+		result.transition_type := petrinet::Type::Synchronization;
+	} else if self.oclIsKindOf(FIFO)  then {
+		result.transition_type := petrinet::Type::FIFO;
+	} else if self.oclIsKindOf(Iteration) then {
+		result.transition_type := petrinet::Type::Iteration;
+	} else {
+		result.transition_type := petrinet::Type::Fork;
+	}
+	endif endif endif endif;
 }
 
 mapping Task::task2place(in globalNet : PetriNet) : Petrinet::Place {
@@ -64,9 +77,10 @@ mapping Task::task2place(in globalNet : PetriNet) : Petrinet::Place {
 	result.net := globalNet;
 }
 
+
 mapping StartPoint::sp2place(in globalNet : PetriNet) : Petrinet::Place {
 	result.name := self.entity_id;
-	result.net := globalNet;
+	result.net := globalNet;	
 }
 
 mapping EndPoint::ep2place(in globalNet : PetriNet) : Petrinet::Place {
