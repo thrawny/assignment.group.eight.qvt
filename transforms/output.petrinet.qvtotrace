@@ -15,7 +15,7 @@
     <result>
       <result kind="OUT" name="result" type="PetriNet">
         <value>
-          <modelElement href="output.petrinet#/0"/>
+          <modelElement href="output.petrinet#/"/>
         </value>
       </result>
     </result>
@@ -34,14 +34,14 @@
     <parameters>
       <parameters name="globalNet" type="PetriNet">
         <value>
-          <modelElement href="output.petrinet#/0"/>
+          <modelElement href="output.petrinet#/"/>
         </value>
       </parameters>
     </parameters>
     <result>
       <result kind="OUT" name="result" type="Place">
         <value>
-          <modelElement href="output.petrinet#/0/@nodes.2"/>
+          <modelElement href="output.petrinet#//@nodes.1"/>
         </value>
       </result>
     </result>
@@ -60,14 +60,14 @@
     <parameters>
       <parameters name="globalNet" type="PetriNet">
         <value>
-          <modelElement href="output.petrinet#/0"/>
+          <modelElement href="output.petrinet#/"/>
         </value>
       </parameters>
     </parameters>
     <result>
       <result kind="OUT" name="result" type="Place">
         <value>
-          <modelElement href="output.petrinet#/0/@nodes.4"/>
+          <modelElement href="output.petrinet#//@nodes.2"/>
         </value>
       </result>
     </result>
@@ -86,14 +86,14 @@
     <parameters>
       <parameters name="globalNet" type="PetriNet">
         <value>
-          <modelElement href="output.petrinet#/0"/>
+          <modelElement href="output.petrinet#/"/>
         </value>
       </parameters>
     </parameters>
     <result>
       <result kind="OUT" name="result" type="Place">
         <value>
-          <modelElement href="output.petrinet#/0/@nodes.1"/>
+          <modelElement href="output.petrinet#//@nodes.3"/>
         </value>
       </result>
     </result>
@@ -112,14 +112,14 @@
     <parameters>
       <parameters name="globalNet" type="PetriNet">
         <value>
-          <modelElement href="output.petrinet#/0"/>
+          <modelElement href="output.petrinet#/"/>
         </value>
       </parameters>
     </parameters>
     <result>
       <result kind="OUT" name="result" type="Place">
         <value>
-          <modelElement href="output.petrinet#/0/@nodes.5"/>
+          <modelElement href="output.petrinet#//@nodes.0"/>
         </value>
       </result>
     </result>
