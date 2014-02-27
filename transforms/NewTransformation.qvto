@@ -1,7 +1,7 @@
 modeltype Workflow uses workflowengine('http://workflowengine/1.0');
 modeltype Petrinet uses petrinet('chalmers.se/cse/mde2014');
 
-transformation Workflow(in source:Workflow, out target:Petrinet);
+transformation Workflow2Petrinet(in source:Workflow, out target:Petrinet);
 
 
 main() {
@@ -9,9 +9,128 @@ main() {
 }
 
 mapping Workflow::Case::case2petriNet() : PetriNet {
-	name := "GlobalNet";
-	arcs := self.map transition2arc(self.allInstances(Entity), result);
+	result.name := "GlobalNet";
+	
+	//Step 1: tasks, startopoint and  endpoint -> places
+	result.nodes := self.contains_tasks.map task2place(result)->asOrderedSet()
+		->union(self.begins_with.map sp2place(result) -> asOrderedSet())
+		->union(self.ends_with.map ep2place(result) -> asOrderedSet());
+		
+	//Step 2: controller -> transitions
+	result.nodes := result.nodes->union(self.contains_controllers.map controller2tran(result)->asOrderedSet());
+	
+	//Step 3: check for special cases in our model and transform them accordingly in petrinet
+	result.nodes := result.nodes->union(self.taskSpecialCases(result))
+		->union(self.controllerSpecialCases(result));
+	
+	
+	
+	arcs := self.resolve(Petrinet::Arc);
 }
+
+mapping Task::task2place(in globalNet : PetriNet) : Petrinet::Place {
+	result.name := self.entity_id;
+	result.net := globalNet;
+}
+
+mapping StartPoint::sp2place(in globalNet : PetriNet) : Petrinet::Place {
+	result.name := self.entity_id;
+	result.net := globalNet;	
+}
+
+mapping EndPoint::ep2place(in globalNet : PetriNet) : Petrinet::Place {
+	result.name := self.entity_id;
+	result.net := globalNet;
+}
+
+helper Case::taskSpecialCases(globalNet : PetriNet) : OrderedSet(Petrinet::Transition) {
+	var places := globalNet.nodes;
+	var res : OrderedSet(Petrinet::Transition);
+	var tmp : Set(Element);
+	
+	tmp := tmp->union(self.allSubobjectsOfType(StartPoint))
+		->union(self.allSubobjectsOfType(Task))
+		->union(self.allSubobjectsOfType(EndPoint));
+		
+	tmp -> forEach(tmp1){
+	tmp -> forEach(tmp2){
+		var task1 := tmp1.oclAsType(Workflow::Entity);
+		var task2 := tmp2.oclAsType(Workflow::Entity);
+		
+		if(task1 <> task2 
+			and task1.outgoing_transitions->intersection(task2.incoming_transitions)
+			->size() = 1) then{
+			//Transition
+			var transition : Petrinet::Transition := new Petrinet::Transition();
+			//Places
+			var place1 := places[name = task1.entity_id]->first();
+			var place2 := places[name = task2.entity_id]->first();
+			//Arcs
+			var arc1 : Petrinet::Arc := new Petrinet::Arc();
+			var arc2 : Petrinet::Arc := new Petrinet::Arc();
+			
+			arc1.source := place1;
+			arc1.target := transition;
+			arc1.net := globalNet;
+			arc2.source := transition;
+			arc2.target := place2;
+			arc2.net := globalNet;
+			
+			
+
+			transition.name := task1.entity_id+" to "+task2.entity_id;
+			transition.net := globalNet;
+			res += transition;
+		}endif
+	}
+	};	
+	return res;
+}
+
+helper Case::controllerSpecialCases(in globalNet : PetriNet) : OrderedSet(Petrinet::Place) {
+	var res : OrderedSet(Petrinet::Place);
+	var tmp : Set(Workflow::Controller);
+	
+	tmp := self.contains_controllers;
+	
+	tmp -> forEach(cont1){
+	tmp -> forEach(cont2){
+		if(cont1 <> cont2 
+			and cont1.outgoing_transitions->intersection(cont2.incoming_transitions)
+			->size() = 1) then{
+			var place : Petrinet::Place := new Petrinet::Place();
+			place.name := cont1.entity_id+" to "+cont2.entity_id;
+			place.net := globalNet;
+			res += place;
+		}endif
+	}
+	};	
+	return res;
+}
+
+mapping Controller:: controller2tran(in globalNet : PetriNet) : Petrinet::Transition {
+	result.name := self.entity_id;
+	result.net := globalNet;
+	if self.oclIsKindOf(Selection) 	then {
+		result.transition_type := petrinet::Type::Selection;
+	} else if self.oclIsKindOf(Synchronization) then {
+		result.transition_type := petrinet::Type::Synchronization;
+	} else if self.oclIsKindOf(FIFO)  then {
+		result.transition_type := petrinet::Type::FIFO;
+	} else if self.oclIsKindOf(Iteration) then {
+		result.transition_type := petrinet::Type::Iteration;
+	} else {
+		result.transition_type := petrinet::Type::Fork;
+	}
+	endif endif endif endif;
+}
+
+
+
+
+
+/*
+
 
 mapping Workflow::Case::transition2arc(in entities: Set(Entity), globalNet : PetriNet) : OrderedSet(Petrinet::Arc) {
 	entities -> forEach(en1){
@@ -55,36 +174,13 @@ mapping Workflow::Case::transition2arc(in entities: Set(Entity), globalNet : Pet
 	}
 }
 
-mapping Controller:: controller2tran(in globalNet : PetriNet) : Petrinet::Transition {
-	result.name := self.entity_id;
-	result.net := globalNet;
-	if self.oclIsKindOf(Selection) 	then {
-		result.transition_type := petrinet::Type::Selection;
-	} else if self.oclIsKindOf(Synchronization) then {
-		result.transition_type := petrinet::Type::Synchronization;
-	} else if self.oclIsKindOf(FIFO)  then {
-		result.transition_type := petrinet::Type::FIFO;
-	} else if self.oclIsKindOf(Iteration) then {
-		result.transition_type := petrinet::Type::Iteration;
-	} else {
-		result.transition_type := petrinet::Type::Fork;
-	}
-	endif endif endif endif;
-}
-
-mapping Task::task2place(in globalNet : PetriNet) : Petrinet::Place {
-	result.name := self.entity_id;
-	result.net := globalNet;
-}
 
 
-mapping StartPoint::sp2place(in globalNet : PetriNet) : Petrinet::Place {
-	result.name := self.entity_id;
-	result.net := globalNet;	
-}
 
-mapping EndPoint::ep2place(in globalNet : PetriNet) : Petrinet::Place {
-	result.name := self.entity_id;
-	result.net := globalNet;
-}
 
+
+
+
+
+
+*/
