@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <se.chalmers.cse.mde2014:PetriNet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:se.chalmers.cse.mde2014="chalmers.se/cse/mde2014" name="GlobalNet">
-  <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="ep" net="/"/>
+  <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="SEL1" net="/"/>
+  <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="t4" net="/"/>
+  <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="EP" net="/"/>
+  <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="FORK_1" net="/" transition_type="Fork"/>
+  <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="t3" net="/"/>
   <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="t1" net="/"/>
+  <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="t5" net="/"/>
+  <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="FIFO1" net="/" transition_type="FIFO"/>
+  <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="SP" net="/"/>
   <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="t2" net="/"/>
-  <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="sp" net="/"/>
-  <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="t2 to ep" net="/"/>
-  <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="t1 to t2" net="/"/>
-  <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="sp to t1" net="/"/>
-  <arcs net="/" source="//@nodes.2" target="//@nodes.4"/>
-  <arcs net="/" source="//@nodes.4" target="//@nodes.0"/>
-  <arcs net="/" source="//@nodes.1" target="//@nodes.5"/>
-  <arcs net="/" source="//@nodes.5" target="//@nodes.2"/>
+  <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="SYNCH_1" net="/" transition_type="Synchronization"/>
+  <arcs net="/" source="//@nodes.8" target="//@nodes.0"/>
+  <arcs net="/" source="//@nodes.0" target="//@nodes.9"/>
+  <arcs net="/" source="//@nodes.0" target="//@nodes.4"/>
+  <arcs net="/" source="//@nodes.9" target="//@nodes.7"/>
+  <arcs net="/" source="//@nodes.4" target="//@nodes.7"/>
+  <arcs net="/" source="//@nodes.7" target="//@nodes.5"/>
+  <arcs net="/" source="//@nodes.5" target="//@nodes.3"/>
+  <arcs net="/" source="//@nodes.1" target="//@nodes.10"/>
+  <arcs net="/" source="//@nodes.6" target="//@nodes.10"/>
+  <arcs net="/" source="//@nodes.3" target="//@nodes.1"/>
   <arcs net="/" source="//@nodes.3" target="//@nodes.6"/>
-  <arcs net="/" source="//@nodes.6" target="//@nodes.1"/>
+  <arcs net="/" source="//@nodes.10" target="//@nodes.2"/>
 </se.chalmers.cse.mde2014:PetriNet>
