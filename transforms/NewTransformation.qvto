@@ -11,12 +11,20 @@ main() {
 mapping Workflow::Case::case2petriNet() : PetriNet {
 	result.name := "GlobalNet";
 	
-	//Step 1: tasks, startopoint and  endpoint -> places
+	/*
+	*
+	*Step 1: mapping startPoint, endPoint and tasks to places
+	*
+	*/
 	result.nodes := self.contains_tasks.map task2place(result)->asOrderedSet()
 		->union(self.begins_with.map sp2place(result) -> asOrderedSet())
 		->union(self.ends_with.map ep2place(result) -> asOrderedSet());
 		
-	//Step 2: controller -> transitions
+	/*
+	*
+	*Step 2: mapping controllers to transitions
+	*
+	*/
 	result.nodes := result.nodes->union(self.contains_controllers.map controller2tran(result)->asOrderedSet());
 	
 	
@@ -34,6 +42,8 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 	
 	//Temporary collection for entities that are not controllers
 	var tmp : Set(Element);
+	
+	//Searching for special cases on tasks
 	tmp := tmp->union(self.allSubobjectsOfType(StartPoint))
 		->union(self.allSubobjectsOfType(Task))
 		->union(self.allSubobjectsOfType(EndPoint));
@@ -73,6 +83,8 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			//Populating the transition properties
 			transition.name := task1.entity_id+" to "+task2.entity_id;
 			transition.net := result;
+			transition.incoming := arc1->asSet();
+			transition.outgoing := arc2->asSet();
 			
 			//Removing the transition already transofrmed
 			transitions := (transitions- commonTrans)->asOrderedSet();
@@ -83,6 +95,10 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			//Adding the arcs to the petrinet
 			result.arcs += arc1;
 			result.arcs += arc2;
+			
+			//Addng incoming and outgoing arcs to the places
+			place1.outgoing := place1.outgoing->union(arc1->asSet());
+			place2.incoming := place2.incoming->union(arc2->asSet());
 
 		}endif
 		}endif
@@ -94,7 +110,7 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 
 	
 	
-	
+	//Searching for special cases on controllers
 	self.contains_controllers -> forEach(cont1){
 	self.contains_controllers -> forEach(cont2){
 		
@@ -127,6 +143,8 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 				//Populating the dummy place properties
 				place.name := cont1.entity_id+" to "+cont2.entity_id;
 				place.net := result;
+				place.incoming := arc1->asSet();
+				place.outgoing := arc2->asSet();
 				
 				//Adding the dummyplace to the petrinet
 				result.nodes += place;
@@ -138,6 +156,11 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 				//Removing the transition already transofrmed
 				transitions := (transitions- commonTransitions)->asOrderedSet();
 				
+				//Addng incoming and outgoing arcs to the places
+				tran1.outgoing := tran1.outgoing->union(arc1->asSet());
+				tran2.incoming := tran2.incoming->union(arc2->asSet());
+				
+				
 			} endif;
 		}endif
 	}
@@ -145,7 +168,7 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 		
 	/**
 	*
-	* Adding the remaining arcs
+	* Step 4: Adding the remaining arcs
 	*
 	*/	
 	result.arcs := result.arcs->union(transitions.map tran2arc(result, self)->asOrderedSet());
@@ -186,9 +209,21 @@ mapping Controller:: controller2tran(in globalNet : PetriNet) : Petrinet::Transi
 }
 
 mapping Workflow::Transition::tran2arc(globalNet: PetriNet, ourCase : Case) : Petrinet::Arc {
-	result.net := globalNet;
+	//Casting
 	var entities := ourCase.allSubobjectsOfKind(Entity)->oclAsType(Entity);
-	result.source := globalNet.nodes[name = entities[outgoing_transitions->includes(self)]->asOrderedSet()->first().entity_id]->asOrderedSet()->first();
-	result.target := globalNet.nodes[name = entities[incoming_transitions->includes(self)]->asOrderedSet()->first().entity_id]->asOrderedSet()->first();
-	log(result.source.toString());
+	
+	//Getting source and target nodes
+	var sourceNode := globalNet.nodes[name = entities[outgoing_transitions->includes(self)]->asOrderedSet()->first().entity_id]->asOrderedSet()->first();
+	var targetNode := globalNet.nodes[name = entities[incoming_transitions->includes(self)]->asOrderedSet()->first().entity_id]->asOrderedSet()->first();
+	
+	//Populating the properties of the arc
+	result.net := globalNet;
+	result.source := sourceNode;
+	result.target := targetNode;
+	
+	//Adding the arc as outgoing and incoming for sourceNode and targetNode respectively
+	sourceNode.outgoing := sourceNode.outgoing->union(result->asSet());
+	targetNode.incoming := targetNode.incoming->union(result->asSet());
+	
+
 }

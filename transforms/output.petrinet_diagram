@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:se.chalmers.cse.mde2014="chalmers.se/cse/mde2014" xmi:id="_1zyqkKIfEeOMXbDLTSuGMg" type="Petrinet" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_0nin8KIhEeOMXbDLTSuGMg" type="2002" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_0nin8qIhEeOMXbDLTSuGMg" type="5002"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_0nin86IhEeOMXbDLTSuGMg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_0nin9KIhEeOMXbDLTSuGMg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_0nin9aIhEeOMXbDLTSuGMg"/>
+    </children>
+    <element xmi:type="se.chalmers.cse.mde2014:Place" href="output.petrinet#//@nodes.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0nin8aIhEeOMXbDLTSuGMg" y="720"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_0nin9qIhEeOMXbDLTSuGMg" type="2002" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_0nin-KIhEeOMXbDLTSuGMg" type="5002"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_0nin-aIhEeOMXbDLTSuGMg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_0nin-qIhEeOMXbDLTSuGMg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_0nin-6IhEeOMXbDLTSuGMg"/>
+    </children>
+    <element xmi:type="se.chalmers.cse.mde2014:Place" href="output.petrinet#//@nodes.1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0nin96IhEeOMXbDLTSuGMg" x="1" y="480"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_0nin_KIhEeOMXbDLTSuGMg" type="2002" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_0njPAKIhEeOMXbDLTSuGMg" type="5002"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_0njPAaIhEeOMXbDLTSuGMg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_0njPAqIhEeOMXbDLTSuGMg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_0njPA6IhEeOMXbDLTSuGMg"/>
+    </children>
+    <element xmi:type="se.chalmers.cse.mde2014:Place" href="output.petrinet#//@nodes.2"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0nin_aIhEeOMXbDLTSuGMg" height="97"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_0njPBKIhEeOMXbDLTSuGMg" type="2002" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_0njPBqIhEeOMXbDLTSuGMg" type="5002"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_0njPB6IhEeOMXbDLTSuGMg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_0njPCKIhEeOMXbDLTSuGMg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_0njPCaIhEeOMXbDLTSuGMg"/>
+    </children>
+    <element xmi:type="se.chalmers.cse.mde2014:Place" href="output.petrinet#//@nodes.3"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0njPBaIhEeOMXbDLTSuGMg" x="1" y="240" height="97"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_0njPCqIhEeOMXbDLTSuGMg" type="2001" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_0nj2EKIhEeOMXbDLTSuGMg" type="5001"/>
+    <element xmi:type="se.chalmers.cse.mde2014:Transition" href="output.petrinet#//@nodes.4"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0njPC6IhEeOMXbDLTSuGMg" x="26" y="380"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_0nj2EaIhEeOMXbDLTSuGMg" type="2001" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_0nj2E6IhEeOMXbDLTSuGMg" type="5001"/>
+    <element xmi:type="se.chalmers.cse.mde2014:Transition" href="output.petrinet#//@nodes.5"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0nj2EqIhEeOMXbDLTSuGMg" x="25" y="620"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_0nj2FKIhEeOMXbDLTSuGMg" type="2001" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_0nj2FqIhEeOMXbDLTSuGMg" type="5001"/>
+    <element xmi:type="se.chalmers.cse.mde2014:Transition" href="output.petrinet#//@nodes.6"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0nj2FaIhEeOMXbDLTSuGMg" x="25" y="140"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_1zyqkaIfEeOMXbDLTSuGMg"/>
+  <element xmi:type="se.chalmers.cse.mde2014:PetriNet" href="output.petrinet#/"/>
+</notation:Diagram>
