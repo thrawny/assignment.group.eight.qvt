@@ -184,6 +184,7 @@ mapping Task::task2place(in globalNet : PetriNet) : Petrinet::Place {
 mapping StartPoint::sp2place(in globalNet : PetriNet) : Petrinet::Place {
 	result.name := self.entity_id;
 	result.net := globalNet;	
+	result.tokens := (new Token())->asOrderedSet();
 }
 
 mapping EndPoint::ep2place(in globalNet : PetriNet) : Petrinet::Place {

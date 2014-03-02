@@ -41,7 +41,7 @@
     <result>
       <result kind="OUT" name="result" type="Place">
         <value>
-          <modelElement href="output.petrinet#//@nodes.1"/>
+          <modelElement href="output.petrinet#//@nodes.2"/>
         </value>
       </result>
     </result>
@@ -67,7 +67,7 @@
     <result>
       <result kind="OUT" name="result" type="Place">
         <value>
-          <modelElement href="output.petrinet#//@nodes.3"/>
+          <modelElement href="output.petrinet#//@nodes.1"/>
         </value>
       </result>
     </result>
@@ -93,7 +93,7 @@
     <result>
       <result kind="OUT" name="result" type="Place">
         <value>
-          <modelElement href="output.petrinet#//@nodes.2"/>
+          <modelElement href="output.petrinet#//@nodes.3"/>
         </value>
       </result>
     </result>
