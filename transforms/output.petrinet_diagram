@@ -1,56 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:se.chalmers.cse.mde2014="chalmers.se/cse/mde2014" xmi:id="_1zyqkKIfEeOMXbDLTSuGMg" type="Petrinet" measurementUnit="Pixel">
-  <children xmi:type="notation:Shape" xmi:id="_0nin8KIhEeOMXbDLTSuGMg" type="2002" fontName="Source Sans Pro">
-    <children xmi:type="notation:DecorationNode" xmi:id="_0nin8qIhEeOMXbDLTSuGMg" type="5002"/>
-    <children xmi:type="notation:DecorationNode" xmi:id="_0nin86IhEeOMXbDLTSuGMg" type="7001">
-      <styles xmi:type="notation:SortingStyle" xmi:id="_0nin9KIhEeOMXbDLTSuGMg"/>
-      <styles xmi:type="notation:FilteringStyle" xmi:id="_0nin9aIhEeOMXbDLTSuGMg"/>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:se.chalmers.cse.mde2014="chalmers.se/cse/mde2014" xmi:id="_2cpNUKKuEeOC8qPhRlPdFw" type="Petrinet" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_2eNTkKKuEeOC8qPhRlPdFw" type="2002" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eNTkqKuEeOC8qPhRlPdFw" type="5002"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eN6oKKuEeOC8qPhRlPdFw" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_2eN6oaKuEeOC8qPhRlPdFw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_2eN6oqKuEeOC8qPhRlPdFw"/>
     </children>
     <element xmi:type="se.chalmers.cse.mde2014:Place" href="output.petrinet#//@nodes.0"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0nin8aIhEeOMXbDLTSuGMg" y="720"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2eNTkaKuEeOC8qPhRlPdFw" x="228" y="1200" height="97"/>
   </children>
-  <children xmi:type="notation:Shape" xmi:id="_0nin9qIhEeOMXbDLTSuGMg" type="2002" fontName="Source Sans Pro">
-    <children xmi:type="notation:DecorationNode" xmi:id="_0nin-KIhEeOMXbDLTSuGMg" type="5002"/>
-    <children xmi:type="notation:DecorationNode" xmi:id="_0nin-aIhEeOMXbDLTSuGMg" type="7001">
-      <styles xmi:type="notation:SortingStyle" xmi:id="_0nin-qIhEeOMXbDLTSuGMg"/>
-      <styles xmi:type="notation:FilteringStyle" xmi:id="_0nin-6IhEeOMXbDLTSuGMg"/>
-    </children>
-    <element xmi:type="se.chalmers.cse.mde2014:Place" href="output.petrinet#//@nodes.1"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0nin96IhEeOMXbDLTSuGMg" x="1" y="480"/>
+  <children xmi:type="notation:Shape" xmi:id="_2eN6o6KuEeOC8qPhRlPdFw" type="2001" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eN6paKuEeOC8qPhRlPdFw" type="5001"/>
+    <element xmi:type="se.chalmers.cse.mde2014:Transition" href="output.petrinet#//@nodes.1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2eN6pKKuEeOC8qPhRlPdFw" x="128" y="380"/>
   </children>
-  <children xmi:type="notation:Shape" xmi:id="_0nin_KIhEeOMXbDLTSuGMg" type="2002" fontName="Source Sans Pro">
-    <children xmi:type="notation:DecorationNode" xmi:id="_0njPAKIhEeOMXbDLTSuGMg" type="5002"/>
-    <children xmi:type="notation:DecorationNode" xmi:id="_0njPAaIhEeOMXbDLTSuGMg" type="7001">
-      <styles xmi:type="notation:SortingStyle" xmi:id="_0njPAqIhEeOMXbDLTSuGMg"/>
-      <styles xmi:type="notation:FilteringStyle" xmi:id="_0njPA6IhEeOMXbDLTSuGMg"/>
+  <children xmi:type="notation:Shape" xmi:id="_2eN6pqKuEeOC8qPhRlPdFw" type="2002" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eN6qKKuEeOC8qPhRlPdFw" type="5002"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eN6qaKuEeOC8qPhRlPdFw" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_2eN6qqKuEeOC8qPhRlPdFw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_2eN6q6KuEeOC8qPhRlPdFw"/>
     </children>
     <element xmi:type="se.chalmers.cse.mde2014:Place" href="output.petrinet#//@nodes.2"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0nin_aIhEeOMXbDLTSuGMg" height="97"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2eN6p6KuEeOC8qPhRlPdFw" x="98" y="960" height="97"/>
   </children>
-  <children xmi:type="notation:Shape" xmi:id="_0njPBKIhEeOMXbDLTSuGMg" type="2002" fontName="Source Sans Pro">
-    <children xmi:type="notation:DecorationNode" xmi:id="_0njPBqIhEeOMXbDLTSuGMg" type="5002"/>
-    <children xmi:type="notation:DecorationNode" xmi:id="_0njPB6IhEeOMXbDLTSuGMg" type="7001">
-      <styles xmi:type="notation:SortingStyle" xmi:id="_0njPCKIhEeOMXbDLTSuGMg"/>
-      <styles xmi:type="notation:FilteringStyle" xmi:id="_0njPCaIhEeOMXbDLTSuGMg"/>
-    </children>
-    <element xmi:type="se.chalmers.cse.mde2014:Place" href="output.petrinet#//@nodes.3"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0njPBaIhEeOMXbDLTSuGMg" x="1" y="240" height="97"/>
+  <children xmi:type="notation:Shape" xmi:id="_2eOhsKKuEeOC8qPhRlPdFw" type="2001" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eOhsqKuEeOC8qPhRlPdFw" type="5001"/>
+    <element xmi:type="se.chalmers.cse.mde2014:Transition" href="output.petrinet#//@nodes.3"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2eOhsaKuEeOC8qPhRlPdFw" x="229" y="860"/>
   </children>
-  <children xmi:type="notation:Shape" xmi:id="_0njPCqIhEeOMXbDLTSuGMg" type="2001" fontName="Source Sans Pro">
-    <children xmi:type="notation:DecorationNode" xmi:id="_0nj2EKIhEeOMXbDLTSuGMg" type="5001"/>
+  <children xmi:type="notation:Shape" xmi:id="_2eOhs6KuEeOC8qPhRlPdFw" type="2001" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eOhtaKuEeOC8qPhRlPdFw" type="5001"/>
     <element xmi:type="se.chalmers.cse.mde2014:Transition" href="output.petrinet#//@nodes.4"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0njPC6IhEeOMXbDLTSuGMg" x="26" y="380"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2eOhtKKuEeOC8qPhRlPdFw" x="124" y="620"/>
   </children>
-  <children xmi:type="notation:Shape" xmi:id="_0nj2EaIhEeOMXbDLTSuGMg" type="2001" fontName="Source Sans Pro">
-    <children xmi:type="notation:DecorationNode" xmi:id="_0nj2E6IhEeOMXbDLTSuGMg" type="5001"/>
-    <element xmi:type="se.chalmers.cse.mde2014:Transition" href="output.petrinet#//@nodes.5"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0nj2EqIhEeOMXbDLTSuGMg" x="25" y="620"/>
+  <children xmi:type="notation:Shape" xmi:id="_2eOhtqKuEeOC8qPhRlPdFw" type="2002" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eOhuKKuEeOC8qPhRlPdFw" type="5002"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eOhuaKuEeOC8qPhRlPdFw" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_2eOhuqKuEeOC8qPhRlPdFw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_2eOhu6KuEeOC8qPhRlPdFw"/>
+    </children>
+    <element xmi:type="se.chalmers.cse.mde2014:Place" href="output.petrinet#//@nodes.5"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2eOht6KuEeOC8qPhRlPdFw" x="101" y="480" height="97"/>
   </children>
-  <children xmi:type="notation:Shape" xmi:id="_0nj2FKIhEeOMXbDLTSuGMg" type="2001" fontName="Source Sans Pro">
-    <children xmi:type="notation:DecorationNode" xmi:id="_0nj2FqIhEeOMXbDLTSuGMg" type="5001"/>
-    <element xmi:type="se.chalmers.cse.mde2014:Transition" href="output.petrinet#//@nodes.6"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0nj2FaIhEeOMXbDLTSuGMg" x="25" y="140"/>
+  <children xmi:type="notation:Shape" xmi:id="_2ePIwKKuEeOC8qPhRlPdFw" type="2002" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2ePIwqKuEeOC8qPhRlPdFw" type="5002"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_2ePIw6KuEeOC8qPhRlPdFw" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_2ePIxKKuEeOC8qPhRlPdFw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_2ePIxaKuEeOC8qPhRlPdFw"/>
+    </children>
+    <element xmi:type="se.chalmers.cse.mde2014:Place" href="output.petrinet#//@nodes.6"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2ePIwaKuEeOC8qPhRlPdFw" x="18" y="240" height="97"/>
   </children>
-  <styles xmi:type="notation:DiagramStyle" xmi:id="_1zyqkaIfEeOMXbDLTSuGMg"/>
+  <children xmi:type="notation:Shape" xmi:id="_2ePIxqKuEeOC8qPhRlPdFw" type="2002" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2ePIyKKuEeOC8qPhRlPdFw" type="5002"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_2ePIyaKuEeOC8qPhRlPdFw" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_2ePIyqKuEeOC8qPhRlPdFw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_2ePIy6KuEeOC8qPhRlPdFw"/>
+    </children>
+    <element xmi:type="se.chalmers.cse.mde2014:Place" href="output.petrinet#//@nodes.7"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2ePIx6KuEeOC8qPhRlPdFw" x="99" height="97"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_2ePIzKKuEeOC8qPhRlPdFw" type="2001" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2ePv0KKuEeOC8qPhRlPdFw" type="5001"/>
+    <element xmi:type="se.chalmers.cse.mde2014:Transition" href="output.petrinet#//@nodes.8"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2ePIzaKuEeOC8qPhRlPdFw" x="127" y="140"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_2ePv0aKuEeOC8qPhRlPdFw" type="2002" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2ePv06KuEeOC8qPhRlPdFw" type="5002"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_2ePv1KKuEeOC8qPhRlPdFw" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_2ePv1aKuEeOC8qPhRlPdFw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_2ePv1qKuEeOC8qPhRlPdFw"/>
+    </children>
+    <element xmi:type="se.chalmers.cse.mde2014:Place" href="output.petrinet#//@nodes.9"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2ePv0qKuEeOC8qPhRlPdFw" y="720" height="97"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_2ePv16KuEeOC8qPhRlPdFw" type="2002" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2ePv2aKuEeOC8qPhRlPdFw" type="5002"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_2ePv2qKuEeOC8qPhRlPdFw" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_2ePv26KuEeOC8qPhRlPdFw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_2ePv3KKuEeOC8qPhRlPdFw"/>
+    </children>
+    <element xmi:type="se.chalmers.cse.mde2014:Place" href="output.petrinet#//@nodes.10"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2ePv2KKuEeOC8qPhRlPdFw" x="262" y="960" height="97"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_2eQW4KKuEeOC8qPhRlPdFw" type="2002" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eQW4qKuEeOC8qPhRlPdFw" type="5002"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eQW46KuEeOC8qPhRlPdFw" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_2eQW5KKuEeOC8qPhRlPdFw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_2eQW5aKuEeOC8qPhRlPdFw"/>
+    </children>
+    <element xmi:type="se.chalmers.cse.mde2014:Place" href="output.petrinet#//@nodes.11"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2eQW4aKuEeOC8qPhRlPdFw" x="97" y="1440" height="97"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_2eQW5qKuEeOC8qPhRlPdFw" type="2001" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eQW6KKuEeOC8qPhRlPdFw" type="5001"/>
+    <element xmi:type="se.chalmers.cse.mde2014:Transition" href="output.petrinet#//@nodes.12"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2eQW56KuEeOC8qPhRlPdFw" x="117" y="1340"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_2eQW6aKuEeOC8qPhRlPdFw" type="2002" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eQ98KKuEeOC8qPhRlPdFw" type="5002"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eQ98aKuEeOC8qPhRlPdFw" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_2eQ98qKuEeOC8qPhRlPdFw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_2eQ986KuEeOC8qPhRlPdFw"/>
+    </children>
+    <element xmi:type="se.chalmers.cse.mde2014:Place" href="output.petrinet#//@nodes.13"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2eQW6qKuEeOC8qPhRlPdFw" x="182" y="240" height="97"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_2eQ99KKuEeOC8qPhRlPdFw" type="2001" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eQ99qKuEeOC8qPhRlPdFw" type="5001"/>
+    <element xmi:type="se.chalmers.cse.mde2014:Transition" href="output.petrinet#//@nodes.14"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2eQ99aKuEeOC8qPhRlPdFw" x="254" y="1100"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_2eQ996KuEeOC8qPhRlPdFw" type="2002" fontName="Source Sans Pro">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eQ9-aKuEeOC8qPhRlPdFw" type="5002"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eQ9-qKuEeOC8qPhRlPdFw" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_2eQ9-6KuEeOC8qPhRlPdFw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_2eQ9_KKuEeOC8qPhRlPdFw"/>
+    </children>
+    <element xmi:type="se.chalmers.cse.mde2014:Place" href="output.petrinet#//@nodes.15"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2eQ9-KKuEeOC8qPhRlPdFw" x="164" y="720" height="97"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_2cpNUaKuEeOC8qPhRlPdFw"/>
   <element xmi:type="se.chalmers.cse.mde2014:PetriNet" href="output.petrinet#/"/>
 </notation:Diagram>
