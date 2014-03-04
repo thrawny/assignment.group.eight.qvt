@@ -1,11 +1,11 @@
 modeltype Workflow uses workflowengine('http://workflowengine/1.0');
 modeltype Petrinet uses petrinet('chalmers.se/cse/mde2014');
 
-transformation Workflow2Petrinet(in source:Workflow, out target:Petrinet);
+transformation Workflow2Petrinet(in sourceW:Workflow, out targetT:Petrinet);
 
 
 main() {
-	var globalNet := source.rootObjects()[Workflow::Case]->map case2petriNet();
+	var globalNet := sourceW.rootObjects()[Workflow::Case]->map case2petriNet();
 }
 
 mapping Workflow::Case::case2petriNet() : PetriNet {
@@ -165,13 +165,14 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 		}endif
 	}
 	};	
-		
+	
 	/**
 	*
 	* Step 4: Adding the remaining arcs
 	*
 	*/	
 	result.arcs := result.arcs->union(transitions.map tran2arc(result, self)->asOrderedSet());
+		
 	
 	
 	/**
@@ -181,7 +182,8 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 	*/
 	self.contains_tasks -> forEach(task){
 		task.is_associated_to -> forEach(resource){
-			//Creating a place for storing the resource TODO: check if the place already exists
+			
+			//Creating a place for storing the resource
 			var place : Petrinet::Place;
 			if(result.nodes[name = "Resource "+resource.resource_id]->size() = 0) then{
 				place := new Place();
@@ -191,37 +193,60 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 				place := result.nodes[name = "Resource "+resource.resource_id]->oclAsType(Place)->first();
 			}
 			endif;
+			
+			
+			//Creating  dummiTransition
+			var dummiTran := new Petrinet::Transition();
+			var dummiPlace := new Petrinet::Place();
+			dummiTran.name := "Dummi tran for resource "+resource.resource_id;
+			dummiPlace.name := "Dummi place for resource "+resource.resource_id;
+			
+			dummiTran.net;
+			dummiPlace.net;
 		
 			//Getting the place associated with the task that contains this resource
 			var resourceOwner := result.nodes[name = task.entity_id]->first();
-			
 			
 			//Getting the next transition after the task
 			var nextTransition := result.nodes[incoming->intersection(resourceOwner.outgoing)->size() <> 0]->first();
 			
 			//Creating the arcs
-			var arc1 := new Arc();
-			var arc2 := new Arc();
+			var arc1 := new Arc(result, place, dummiTran);
+			var arc2 := new Arc(result, dummiTran, place);
+			var arcToDummiTran := new Arc(result, resourceOwner, dummiTran);
+			var arcToDummiPlace := new Arc(result, dummiTran, dummiPlace);
+			var arcToNextTran := new Arc(result, dummiPlace, nextTransition);
 			
-			arc1.net := result;
-			arc2.net := result;
-			
-			arc1.source := place;
-			arc2.target := place;
-			
-			arc1.target := nextTransition;
-			arc2.source := nextTransition;
 			
 			place.outgoing := place.outgoing ->union(arc1->asSet());
 			place.incoming := place.incoming ->union(arc2->asSet());
 			
-			nextTransition.incoming := place.incoming->union(arc1->asSet());
-			nextTransition.outgoing := place.outgoing->union(arc2->asSet());
+			nextTransition.incoming := place.incoming->union(arcToNextTran->asSet());
+
+
+			var existingArc := result.arcs[source = resourceOwner and target = nextTransition]->asOrderedSet()->first();
+			resourceOwner.outgoing := resourceOwner.outgoing->excluding(existingArc);		
+			nextTransition.incoming := nextTransition.incoming->excluding(existingArc);
+			result.arcs := result.arcs->excluding(existingArc);
 			
-			log(result.arcs->size().toString());
+			resourceOwner.outgoing := resourceOwner.outgoing->union(arcToDummiTran->asSet());
+			
+			
+			dummiTran.incoming += arcToDummiTran;
+			dummiTran.outgoing += arcToDummiPlace;
+			
+			dummiPlace.incoming += arcToDummiPlace;
+			dummiPlace.outgoing += arcToNextTran;
+
+			
+			
+
 			result.arcs += arc1;
 			result.arcs += arc2;
-			log(result.arcs->size().toString());
+			result.arcs += arcToDummiTran;
+			result.arcs += arcToDummiPlace;
+			result.arcs += arcToNextTran;
+
 			
 			
 			//populating the resource place
@@ -229,6 +254,8 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			
 			//adding the place generated to the collection
 			result.nodes := result.nodes->union(place->asSet());
+			result.nodes := result.nodes->union(dummiTran->asSet());
+			result.nodes := result.nodes->union(dummiPlace->asSet());
 		}
 	};
 	
@@ -325,5 +352,10 @@ mapping Resource::res2Place( net: PetriNet, workflow: Case): Petrinet::Place {
 	
 	//populating the resource place
 	result.name := "Resource "+self.resource_id;
-	
+}
+
+constructor Petrinet::Arc::Arc(net: PetriNet,s: Node, t: Node){
+	result.source := s;
+	result.target := t;
+	result.net := net;
 }
