@@ -173,6 +173,65 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 	*/	
 	result.arcs := result.arcs->union(transitions.map tran2arc(result, self)->asOrderedSet());
 	
+	
+	/**
+	*
+	* Step 5: Creating resources
+	*
+	*/
+	self.contains_tasks -> forEach(task){
+		task.is_associated_to -> forEach(resource){
+			//Creating a place for storing the resource TODO: check if the place already exists
+			var place : Petrinet::Place;
+			if(result.nodes[name = "Resource "+resource.resource_id]->size() = 0) then{
+				place := new Place();
+				place.tokens := new Token()->asOrderedSet();
+			}
+			else {
+				place := result.nodes[name = "Resource "+resource.resource_id]->oclAsType(Place)->first();
+			}
+			endif;
+		
+			//Getting the place associated with the task that contains this resource
+			var resourceOwner := result.nodes[name = task.entity_id]->first();
+			
+			
+			//Getting the next transition after the task
+			var nextTransition := result.nodes[incoming->intersection(resourceOwner.outgoing)->size() <> 0]->first();
+			
+			//Creating the arcs
+			var arc1 := new Arc();
+			var arc2 := new Arc();
+			
+			arc1.net := result;
+			arc2.net := result;
+			
+			arc1.source := place;
+			arc2.target := place;
+			
+			arc1.target := nextTransition;
+			arc2.source := nextTransition;
+			
+			place.outgoing := place.outgoing ->union(arc1->asSet());
+			place.incoming := place.incoming ->union(arc2->asSet());
+			
+			nextTransition.incoming := place.incoming->union(arc1->asSet());
+			nextTransition.outgoing := place.outgoing->union(arc2->asSet());
+			
+			log(result.arcs->size().toString());
+			result.arcs += arc1;
+			result.arcs += arc2;
+			log(result.arcs->size().toString());
+			
+			
+			//populating the resource place
+			place.name := "Resource "+resource.resource_id;
+			
+			//adding the place generated to the collection
+			result.nodes := result.nodes->union(place->asSet());
+		}
+	};
+	
 
 }
 
@@ -227,4 +286,44 @@ mapping Workflow::Transition::tran2arc(globalNet: PetriNet, ourCase : Case) : Pe
 	targetNode.incoming := targetNode.incoming->union(result->asSet());
 	
 
+}
+
+mapping Resource::res2Place( net: PetriNet, workflow: Case): Petrinet::Place {
+	//Getting the place associated with the task that contains this resource
+	var resourceOwner := net.nodes[name = workflow.contains_tasks[is_associated_to->includes(self)]->first().entity_id]->first();
+	
+	//Create a readable copy of the arcs
+	var arcs := net.arcs;
+	
+	//Getting the next transition after the task
+	var nextTransition := net.nodes[incoming->intersection(resourceOwner.outgoing)->size() <> 0]->first();
+	
+	//Creating the arcs
+	var arc1 := new Arc();
+	var arc2 := new Arc();
+	
+	arc1.net := net;
+	arc2.net := net;
+	
+	arc1.source := result;
+	arc2.target := result;
+	
+	arc1.target := nextTransition;
+	arc2.source := nextTransition;
+	
+	result.outgoing := result.outgoing ->union(arc1->asSet());
+	result.incoming := result.incoming ->union(arc2->asSet());
+	
+	nextTransition.incoming := result.incoming->union(arc1->asSet());
+	nextTransition.outgoing := result.outgoing->union(arc2->asSet());
+	
+	log(net.arcs->size().toString());
+	arcs := arcs->union(arc1->asSet())->asOrderedSet();
+	arcs += arc2;
+	log(net.arcs->size().toString());
+	
+	
+	//populating the resource place
+	result.name := "Resource "+self.resource_id;
+	
 }
