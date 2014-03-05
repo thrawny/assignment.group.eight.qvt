@@ -164,7 +164,47 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			} endif;
 		}endif
 	}
-	};	
+	};
+	
+	
+	
+	/**
+		Step X: Find and create selection 
+		
+	*/
+	self.contains_controllers -> forEach(sel) {
+		if sel.oclIsKindOf(Selection) then {
+			var dummiplace:= new Petrinet::Place();
+			dummiplace.name := "Dummi place for: " +sel.entity_id;
+			
+			// find incoming transition in petri net and create arc between
+			var inc := result.nodes[name = sel.entity_id]->oclAsType(Petrinet::Transition)->first();
+			var arc := new Arc(result, inc, dummiplace);
+			
+			dummiplace.incoming := dummiplace.incoming->union(arc->asOrderedSet());
+			dummiplace.net;
+			
+			result.nodes += dummiplace;
+			result.arcs += arc;
+			
+			// find number of outgoing connections and creating of dummy transitions
+			var i = 1;
+			sel.outgoing_transitions -> forEach(tran) {
+				var dummitran = new Petrinet::Transition();
+				dummitran.name := "Dummi tran "+i.toString()+" for: " + dummiplace.name;
+				
+				var tmparc = new Arc(result, dummiplace, dummitran);
+				dummitran.incoming := tmparc;
+				dummiplace.outgoing := dummiplace.outgoing->union(tmparc->asOrderedSet());
+				dummitran.net;
+				result.nodes += dummitran;
+				result.arcs += tmparc;
+				i = i+1;
+			};
+		}
+		endif;	
+	};
+	
 	
 	/**
 	*
@@ -358,4 +398,12 @@ constructor Petrinet::Arc::Arc(net: PetriNet,s: Node, t: Node){
 	result.source := s;
 	result.target := t;
 	result.net := net;
+}
+
+constructor Petrinet::Transition::Transition() {
+	//result.net := net;
+}
+
+constructor Petrinet::Place::Place() {
+	//result.net := net;	
 }
