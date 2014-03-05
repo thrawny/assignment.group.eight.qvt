@@ -176,7 +176,7 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 		if sel.oclIsKindOf(Selection) then {
 		
 			var dummiplace:= new Petrinet::Place();
-			dummiplace.name := "Dummi place for: " +sel.entity_id;
+			dummiplace.name := "Dummy place for: " +sel.entity_id;
 			
 			// find incoming transition in petri net and create arc between
 			var inc := result.nodes[name = sel.entity_id]->oclAsType(Petrinet::Transition)->first();
@@ -192,7 +192,7 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			var i = 1;
 			sel.outgoing_transitions -> forEach(tran) {
 				var dummitran = new Petrinet::Transition();
-				dummitran.name := "Dummi tran "+i.toString()+" for: " + dummiplace.name;
+				dummitran.name := "Dummy tran "+i.toString()+" for: " + dummiplace.name;
 				
 				var incarc = new Arc(result, dummiplace, dummitran);
 				dummitran.incoming := incarc;
@@ -207,18 +207,6 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 						dummitran.outgoing := dummitran.outgoing->union(outarc->asOrderedSet());
 						place.incoming := place.incoming->union(outarc->asOrderedSet());
 						result.arcs += outarc;
-						
-						/*log(inc.toString());
-						log(place.toString());
-						
-						var existingArc := result.arcs[source = inc and target = place]->oclAsType(Petrinet::Arc)->first();
-						log(existingArc.toString());
-						
-						inc.outgoing := inc.outgoing->excluding(existingArc);
-
-						place.incoming := place.incoming->excluding(existingArc);
-						result.arcs := result.arcs->excluding(existingArc);*/		
-						
 					} endif;
 				};
 								
@@ -226,7 +214,7 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 				dummitran.net;
 				result.nodes += dummitran;
 				result.arcs += incarc;
-				i = i+1;
+				i := i+1;
 			};
 			
 			transitions := (transitions - sel.outgoing_transitions)->asOrderedSet();
