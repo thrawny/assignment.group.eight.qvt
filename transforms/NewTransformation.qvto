@@ -168,12 +168,13 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 	
 	
 	
-	/**
-		Step X: Find and create selection 
+	/*
+		Step X: Find and create selections
 		
 	*/
 	self.contains_controllers -> forEach(sel) {
 		if sel.oclIsKindOf(Selection) then {
+		
 			var dummiplace:= new Petrinet::Place();
 			dummiplace.name := "Dummi place for: " +sel.entity_id;
 			
@@ -193,16 +194,45 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 				var dummitran = new Petrinet::Transition();
 				dummitran.name := "Dummi tran "+i.toString()+" for: " + dummiplace.name;
 				
-				var tmparc = new Arc(result, dummiplace, dummitran);
-				dummitran.incoming := tmparc;
-				dummiplace.outgoing := dummiplace.outgoing->union(tmparc->asOrderedSet());
+				var incarc = new Arc(result, dummiplace, dummitran);
+				dummitran.incoming := incarc;
+				
+				// Find outgoing entities
+				self.subobjectsOfKind(Entity) -> forEach(ent) {
+					
+					// Found a match
+					if ent.oclAsType(Entity).incoming_transitions->asOrderedSet()->includes(tran) then {
+						var place := result.nodes[name = ent.oclAsType(Entity).entity_id]->oclAsType(Petrinet::Place)->first();
+						var outarc := new Arc(result, dummitran, place);
+						dummitran.outgoing := dummitran.outgoing->union(outarc->asOrderedSet());
+						place.incoming := place.incoming->union(outarc->asOrderedSet());
+						result.arcs += outarc;
+						
+						/*log(inc.toString());
+						log(place.toString());
+						
+						var existingArc := result.arcs[source = inc and target = place]->oclAsType(Petrinet::Arc)->first();
+						log(existingArc.toString());
+						
+						inc.outgoing := inc.outgoing->excluding(existingArc);
+
+						place.incoming := place.incoming->excluding(existingArc);
+						result.arcs := result.arcs->excluding(existingArc);*/		
+						
+					} endif;
+				};
+								
+				dummiplace.outgoing := dummiplace.outgoing->union(incarc->asOrderedSet());
 				dummitran.net;
 				result.nodes += dummitran;
-				result.arcs += tmparc;
+				result.arcs += incarc;
 				i = i+1;
 			};
+			
+			transitions := (transitions - sel.outgoing_transitions)->asOrderedSet();
+			
 		}
-		endif;	
+		endif;
 	};
 	
 	
@@ -270,7 +300,6 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			result.arcs := result.arcs->excluding(existingArc);
 			
 			resourceOwner.outgoing := resourceOwner.outgoing->union(arcToDummiTran->asSet());
-			
 			
 			dummiTran.incoming += arcToDummiTran;
 			dummiTran.outgoing += arcToDummiPlace;
