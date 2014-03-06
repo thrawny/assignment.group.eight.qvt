@@ -37,6 +37,8 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 	//Creating a writable copy of the transitions
 	var transitions := self.contains_transitions;
 	
+	log(transitions->size().toString());
+	
 	//Creating a writable copy of nodes
 	var places := result.nodes;
 	
@@ -170,8 +172,8 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 	
 	/*
 		Step X: Find and create selections
-		
-	*/
+	*/	
+	
 	self.contains_controllers -> forEach(sel) {
 		if sel.oclIsKindOf(Selection) then {
 		
@@ -183,7 +185,7 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			var arc := new Arc(result, inc, dummiplace);
 			
 			dummiplace.incoming := dummiplace.incoming->union(arc->asOrderedSet());
-			dummiplace.net;
+			
 			
 			result.nodes += dummiplace;
 			result.arcs += arc;
@@ -217,12 +219,72 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 				i := i+1;
 			};
 			
+			log(transitions->size().toString());
 			transitions := (transitions - sel.outgoing_transitions)->asOrderedSet();
-			
+			log(transitions->size().toString());
 		}
 		endif;
 	};
 	
+	
+	/** 
+	*	
+ 	* Step Y: Create FIFO
+	*
+	*/
+	
+	/*self.contains_controllers -> forEach(fifo) {
+		if fifo.oclIsKindOf(FIFO) then {
+			
+			var dummyplace := new Place();
+			dummyplace.name := "Dummy incplace for "+fifo.entity_id;
+
+			dummyplace.net := result;
+			
+			result.nodes += dummyplace;
+			
+			var fifotran := result.nodes[name = fifo.entity_id]->oclAsType(Petrinet::Transition)->first();
+			
+
+			var dummy2fifo := new Arc(result, dummyplace, fifotran);
+			dummyplace.outgoing := dummy2fifo;
+			result.arcs += dummy2fifo;
+			
+			
+			fifo.incoming_transitions -> forEach(tran) {
+				var dummytran := new Petrinet::Transition();
+				dummytran.name := "Dummytran for " +tran.transition_id;
+				dummytran.net := result;
+				result.nodes += dummytran;
+				
+				self.subobjectsOfKind(Entity) -> forEach(ent) {
+					// found match	
+					if ent.oclAsType(Entity).outgoing_transitions->asOrderedSet()->includes(tran) then {
+						
+						var place := result.nodes[name = ent.oclAsType(Entity).entity_id]->oclAsType(Petrinet::Place)->first();
+						var inarc := new Arc(result, place, dummytran);
+						var outarc := new Arc(result, dummytran, dummyplace);
+						
+						dummytran.incoming := dummytran.incoming->union(inarc->asOrderedSet());
+						dummytran.outgoing := dummytran.outgoing->union(outarc->asOrderedSet());
+						 
+						dummyplace.incoming := dummyplace.incoming->union(outarc->asOrderedSet()); 
+						 
+						place.outgoing := place.outgoing->union(outarc->asOrderedSet());
+						result.arcs += inarc;
+						result.arcs += outarc;
+						
+					}endif;
+				}
+				
+			};
+						
+			//transitions := newTrans->asOrderedSet();		
+			
+			//transitions := (transitions - fifo.incoming_transitions)->asOrderedSet();
+			
+		} endif;
+	};*/
 	
 	/**
 	*
@@ -313,6 +375,8 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			result.nodes := result.nodes->union(place->asSet());
 			result.nodes := result.nodes->union(dummiTran->asSet());
 			result.nodes := result.nodes->union(dummiPlace->asSet());
+			
+			
 		}
 	};
 	
