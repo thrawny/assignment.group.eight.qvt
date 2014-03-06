@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trace:Trace xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:trace="http:///www.eclipse.org/m2m/qvt/operational/trace.ecore">
+  <traceRecords>
+    <mappingOperation name="case2petriNet" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//case2petriNet"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Case">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#/"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="task2place" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//task2place"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Task">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_tasks.0"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Place">
+        <value>
+          <modelElement href="output.petrinet#/0/@nodes.11"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="task2place" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//task2place"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Task">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_tasks.1"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Place">
+        <value>
+          <modelElement href="output.petrinet#/0/@nodes.10"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="task2place" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//task2place"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Task">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_tasks.2"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Place">
+        <value>
+          <modelElement href="output.petrinet#/0/@nodes.1"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="task2place" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//task2place"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Task">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_tasks.3"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Place">
+        <value>
+          <modelElement href="output.petrinet#/0/@nodes.3"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="task2place" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//task2place"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Task">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_tasks.4"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Place">
+        <value>
+          <modelElement href="output.petrinet#/0/@nodes.4"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="task2place" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//task2place"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Task">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_tasks.5"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Place">
+        <value>
+          <modelElement href="output.petrinet#/0/@nodes.16"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="task2place" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//task2place"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Task">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_tasks.6"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Place">
+        <value>
+          <modelElement href="output.petrinet#/0/@nodes.22"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="sp2place" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//sp2place"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="StartPoint">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@begins_with"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Place">
+        <value>
+          <modelElement href="output.petrinet#/0/@nodes.21"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="ep2place" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//ep2place"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="EndPoint">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@ends_with"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Place">
+        <value>
+          <modelElement href="output.petrinet#/0/@nodes.8"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="controller2tran" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//controller2tran"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Controller">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_controllers.0"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Transition">
+        <value>
+          <modelElement href="output.petrinet#/0/@nodes.23"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="controller2tran" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//controller2tran"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Controller">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_controllers.1"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Transition">
+        <value>
+          <modelElement href="output.petrinet#/0/@nodes.20"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="controller2tran" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//controller2tran"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Controller">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_controllers.2"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Transition">
+        <value>
+          <modelElement href="output.petrinet#/0/@nodes.5"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="controller2tran" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//controller2tran"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Controller">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_controllers.3"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Transition">
+        <value>
+          <modelElement href="output.petrinet#/0/@nodes.9"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="controller2tran" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//controller2tran"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Controller">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_controllers.4"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Transition">
+        <value>
+          <modelElement href="output.petrinet#/0/@nodes.18"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="tran2arc" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//tran2arc"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Transition">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_transitions.3"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+      <parameters name="ourCase" type="Case">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#/"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Arc">
+        <value>
+          <modelElement href="output.petrinet#/1"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="tran2arc" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//tran2arc"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Transition">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_transitions.15"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+      <parameters name="ourCase" type="Case">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#/"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Arc">
+        <value>
+          <modelElement href="output.petrinet#/0/@arcs.10"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="tran2arc" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//tran2arc"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Transition">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_transitions.12"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+      <parameters name="ourCase" type="Case">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#/"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Arc">
+        <value>
+          <modelElement href="output.petrinet#/0/@arcs.9"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="tran2arc" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//tran2arc"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Transition">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_transitions.11"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+      <parameters name="ourCase" type="Case">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#/"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Arc">
+        <value>
+          <modelElement href="output.petrinet#/0/@arcs.4"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="tran2arc" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//tran2arc"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Transition">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_transitions.8"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+      <parameters name="ourCase" type="Case">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#/"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Arc">
+        <value>
+          <modelElement href="output.petrinet#/2"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="tran2arc" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//tran2arc"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Transition">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_transitions.0"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+      <parameters name="ourCase" type="Case">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#/"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Arc">
+        <value>
+          <modelElement href="output.petrinet#/0/@arcs.6"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="tran2arc" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//tran2arc"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Transition">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_transitions.5"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+      <parameters name="ourCase" type="Case">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#/"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Arc">
+        <value>
+          <modelElement href="output.petrinet#/0/@arcs.2"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="tran2arc" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//tran2arc"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Transition">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_transitions.7"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+      <parameters name="ourCase" type="Case">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#/"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Arc">
+        <value>
+          <modelElement href="output.petrinet#/0/@arcs.12"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="tran2arc" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//tran2arc"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Transition">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_transitions.6"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+      <parameters name="ourCase" type="Case">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#/"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Arc">
+        <value>
+          <modelElement href="output.petrinet#/0/@arcs.13"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="tran2arc" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//tran2arc"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Transition">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_transitions.4"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+      <parameters name="ourCase" type="Case">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#/"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Arc">
+        <value>
+          <modelElement href="output.petrinet#/0/@arcs.1"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="tran2arc" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//tran2arc"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Transition">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_transitions.10"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+      <parameters name="ourCase" type="Case">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#/"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Arc">
+        <value>
+          <modelElement href="output.petrinet#/0/@arcs.11"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="tran2arc" package="Workflow2Petrinet" module="Workflow2Petrinet">
+      <runtimeMappingOperation href="NewTransformation.qvtox#//tran2arc"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Transition">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#//@contains_transitions.13"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="globalNet" type="PetriNet">
+        <value>
+          <modelElement href="output.petrinet#/0"/>
+        </value>
+      </parameters>
+      <parameters name="ourCase" type="Case">
+        <value>
+          <modelElement href="../../../workflows/workflows/test4acceleo.workflowengine#/"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Arc">
+        <value>
+          <modelElement href="output.petrinet#/0/@arcs.14"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+</trace:Trace>
