@@ -233,7 +233,7 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 	*
 	*/
 	
-	/*self.contains_controllers -> forEach(fifo) {
+	self.contains_controllers -> forEach(fifo) {
 		if fifo.oclIsKindOf(FIFO) then {
 			
 			var dummyplace := new Place();
@@ -252,16 +252,22 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			
 			
 			fifo.incoming_transitions -> forEach(tran) {
-				var dummytran := new Petrinet::Transition();
-				dummytran.name := "Dummytran for " +tran.transition_id;
-				dummytran.net := result;
-				result.nodes += dummytran;
 				
-				self.subobjectsOfKind(Entity) -> forEach(ent) {
-					// found match	
-					if ent.oclAsType(Entity).outgoing_transitions->asOrderedSet()->includes(tran) then {
+				
+				self.subobjectsOfKind(Task) -> forEach(task) {
+					
+					// found match
+					if task.oclAsType(Task).outgoing_transitions->asOrderedSet()->includes(tran) and
+						task.oclAsType(Task).is_associated_to->size()=0
 						
-						var place := result.nodes[name = ent.oclAsType(Entity).entity_id]->oclAsType(Petrinet::Place)->first();
+					then {
+												
+						var dummytran := new Petrinet::Transition();
+						dummytran.name := "Dummytran for " +tran.transition_id;
+						dummytran.net := result;
+						result.nodes += dummytran;
+						
+						var place := result.nodes[name = task.oclAsType(Task).entity_id]->oclAsType(Petrinet::Place)->first();
 						var inarc := new Arc(result, place, dummytran);
 						var outarc := new Arc(result, dummytran, dummyplace);
 						
@@ -274,6 +280,8 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 						result.arcs += inarc;
 						result.arcs += outarc;
 						
+						transitions := (transitions - tran->asOrderedSet())->asOrderedSet();
+						
 					}endif;
 				}
 				
@@ -284,7 +292,7 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			//transitions := (transitions - fifo.incoming_transitions)->asOrderedSet();
 			
 		} endif;
-	};*/
+	};
 	
 	/**
 	*
@@ -364,8 +372,25 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			result.arcs += arc2;
 			result.arcs += arcToDummiTran;
 			result.arcs += arcToDummiPlace;
-			result.arcs += arcToNextTran;
-
+		//	result.arcs += arcToNextTran;
+			if arcToNextTran.target.oclAsType(Petrinet::Transition).transition_type = Petrinet::Type::FIFO then {
+				
+				var fifo := arcToNextTran.target.oclAsType(Petrinet::Transition);
+				var incplace := result.nodes[name = "Dummy incplace for " + fifo.name]->first();
+				log(incplace.toString());
+				var dummytran := new Petrinet::Transition();
+				dummytran.name := "Dummytran for Resource to "+fifo.name;
+				dummytran.net := result;
+				
+				var arc := new Arc(result, dummiPlace, dummytran);
+				
+				arcToNextTran.target := incplace;
+				arcToNextTran.source := dummytran;
+				result.nodes += dummytran;
+				result.arcs += arc;
+				result.arcs += arcToNextTran;
+			}endif;
+			
 			
 			
 			//populating the resource place
@@ -378,9 +403,8 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			
 			
 		}
+		
 	};
-	
-
 }
 
 mapping Task::task2place(in globalNet : PetriNet) : Petrinet::Place {
