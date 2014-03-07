@@ -171,7 +171,7 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 	
 	
 	/*
-		Step X: Find and create selections
+		Find and create selection
 	*/	
 	
 	self.contains_controllers -> forEach(sel) {
@@ -227,12 +227,9 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 	};
 	
 	
-	/** 
-	*	
- 	* Step Y: Create FIFO
-	*
+	/*
+ 	* Find and create FIFO
 	*/
-	
 	self.contains_controllers -> forEach(fifo) {
 		if fifo.oclIsKindOf(FIFO) then {
 			
@@ -286,10 +283,6 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 				}
 				
 			};
-						
-			//transitions := newTrans->asOrderedSet();		
-			
-			//transitions := (transitions - fifo.incoming_transitions)->asOrderedSet();
 			
 		} endif;
 	};
@@ -372,20 +365,29 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			result.arcs += arc2;
 			result.arcs += arcToDummiTran;
 			result.arcs += arcToDummiPlace;
-		//	result.arcs += arcToNextTran;
+		
+			//Special case when a task with resource is connected to FIFO
 			if arcToNextTran.target.oclAsType(Petrinet::Transition).transition_type = Petrinet::Type::FIFO then {
 				
+				// get reference to the fifo object
 				var fifo := arcToNextTran.target.oclAsType(Petrinet::Transition);
+				
+				// get reference to dummy incplace of fifo
 				var incplace := result.nodes[name = "Dummy incplace for " + fifo.name]->first();
-				log(incplace.toString());
+				
+				// create new dummy tran between resource and fifo
 				var dummytran := new Petrinet::Transition();
 				dummytran.name := "Dummytran for Resource to "+fifo.name;
 				dummytran.net := result;
 				
+				// create new arc between dummy tran and dummy fifo place
 				var arc := new Arc(result, dummiPlace, dummytran);
 				
+				// correct target and source of the arc
 				arcToNextTran.target := incplace;
 				arcToNextTran.source := dummytran;
+				
+				// add new stuff to net
 				result.nodes += dummytran;
 				result.arcs += arc;
 				result.arcs += arcToNextTran;
