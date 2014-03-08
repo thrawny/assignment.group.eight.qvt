@@ -1,64 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:se.chalmers.cse.mde2014="chalmers.se/cse/mde2014">
   <se.chalmers.cse.mde2014:PetriNet name="GlobalNet">
-    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="Dummi tran for resource test" incoming="/0/@arcs.21" outgoing="/0/@arcs.22"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="t3" net="/0" incoming="/0/@arcs.15" outgoing="/0/@arcs.1"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="Dummi place for resource test" incoming="/0/@arcs.22" outgoing="/0/@arcs.23"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="t4" net="/0" incoming="/0/@arcs.11" outgoing="/0/@arcs.12"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="t5" net="/0" incoming="/0/@arcs.14" outgoing="/0/@arcs.26"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="SYNCH_1" net="/0" incoming="/0/@arcs.25 /0/@arcs.20 /0/@arcs.28" outgoing="/0/@arcs.4" transition_type="Synchronization"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="FORK_1 to FORK_2" net="/0" incoming="/0/@arcs.3" outgoing="/0/@arcs.16"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="Dummy tran 2 for: Dummy place for: SEL1" incoming="/0/@arcs.7" outgoing="/0/@arcs.15"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="EP" net="/0" incoming="/0/@arcs.4"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="FORK_1" net="/0" incoming="/0/@arcs.13" outgoing="/0/@arcs.11 /0/@arcs.3" transition_type="Fork"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="t2" net="/0" incoming="/0/@arcs.18" outgoing="/0/@arcs.21"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="t1" net="/0" incoming="/0/@arcs.2" outgoing="/0/@arcs.13"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="t6 to t7" net="/0" incoming="/0/@arcs.0" outgoing="/0/@arcs.8"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="Resource test" incoming="/0/@arcs.25 /0/@arcs.20" outgoing="/0/@arcs.24 /0/@arcs.19">
+    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="fifo2" net="/0" incoming="/0/@arcs.24 /0/@arcs.28" outgoing="/0/@arcs.9" transition_type="FIFO"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="Dummy tran 1 for: Dummy place for: sel1" incoming="/0/@arcs.21" outgoing="/0/@arcs.6"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="Dummytran for Resource to fifo2" net="/0"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="Dummy tran 1 for: Dummy place for: sel2" incoming="/0/@arcs.13" outgoing="/0/@arcs.22"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="t2" net="/0" incoming="/0/@arcs.22" outgoing="/0/@arcs.11"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="sel1" net="/0" incoming="/0/@arcs.1" outgoing="/0/@arcs.4"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="sel2" net="/0" incoming="/0/@arcs.2"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="ep" net="/0" incoming="/0/@arcs.9"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="Dummy tran 2 for: Dummy place for: sel2" incoming="/0/@arcs.12" outgoing="/0/@arcs.5"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="Dummy incplace for fifo1" net="/0" incoming="/0/@arcs.18 /0/@arcs.11" outgoing="/0/@arcs.10"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="t4" net="/0" incoming="/0/@arcs.16" outgoing="/0/@arcs.25"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="sp" net="/0" outgoing="/0/@arcs.0">
       <tokens/>
     </nodes>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="Dummi tran for resource test" incoming="/0/@arcs.26" outgoing="/0/@arcs.27"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="Dummi place for resource test" incoming="/0/@arcs.27" outgoing="/0/@arcs.28"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="t6" net="/0" incoming="/0/@arcs.9" outgoing="/0/@arcs.0"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="Dummy tran 1 for: Dummy place for: SEL1" incoming="/0/@arcs.5" outgoing="/0/@arcs.18"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="FORK_2" net="/0" incoming="/0/@arcs.16" outgoing="/0/@arcs.14 /0/@arcs.9" transition_type="Fork"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="Dummy place for: SEL1" incoming="/0/@arcs.17" outgoing="/0/@arcs.5 /0/@arcs.7"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="FIFO1" net="/0" incoming="/0/@arcs.23 /0/@arcs.20" outgoing="/0/@arcs.2" transition_type="FIFO"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="SP" net="/0" outgoing="/0/@arcs.6">
+    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="t1" net="/0" incoming="/0/@arcs.20" outgoing="/0/@arcs.1"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="Dummy place for: sel2" incoming="/0/@arcs.8" outgoing="/0/@arcs.12 /0/@arcs.13"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="sel1 to sel2" net="/0" incoming="/0/@arcs.4" outgoing="/0/@arcs.2"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="Dummytran for t3_to_fifo1" net="/0" incoming="/0/@arcs.7" outgoing="/0/@arcs.18"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="Dummi tran for resource r1" incoming="/0/@arcs.25" outgoing="/0/@arcs.26"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="Dummy incplace for fifo2" net="/0" outgoing="/0/@arcs.15"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="Dummi place for resource r1" incoming="/0/@arcs.26" outgoing="/0/@arcs.28"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="Dummy place for: sel1" incoming="/0/@arcs.3" outgoing="/0/@arcs.21 /0/@arcs.14"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="Dummytran for t2_to_fifo1" net="/0" incoming="/0/@arcs.19" outgoing="/0/@arcs.11"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="t3" net="/0" incoming="/0/@arcs.5" outgoing="/0/@arcs.18"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="Resource r1" incoming="/0/@arcs.24" outgoing="/0/@arcs.23">
       <tokens/>
     </nodes>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Place" name="t7" net="/0" incoming="/0/@arcs.8" outgoing="/0/@arcs.10"/>
-    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="SEL1" net="/0" incoming="/0/@arcs.6"/>
-    <arcs net="/0" source="/0/@nodes.16" target="/0/@nodes.12"/>
-    <arcs net="/0" source="/0/@nodes.1" target="/0/@nodes.20"/>
-    <arcs net="/0" source="/0/@nodes.20" target="/0/@nodes.11"/>
-    <arcs net="/0" source="/0/@nodes.9" target="/0/@nodes.6"/>
-    <arcs net="/0" source="/0/@nodes.5" target="/0/@nodes.8"/>
-    <arcs net="/0" source="/0/@nodes.19" target="/0/@nodes.17"/>
-    <arcs net="/0" source="/0/@nodes.21" target="/0/@nodes.23"/>
-    <arcs net="/0" source="/0/@nodes.19" target="/0/@nodes.7"/>
-    <arcs net="/0" source="/0/@nodes.12" target="/0/@nodes.22"/>
-    <arcs net="/0" source="/0/@nodes.18" target="/0/@nodes.16"/>
-    <arcs net="/0" source="/0/@nodes.22" target="/0/@nodes.5"/>
-    <arcs net="/0" source="/0/@nodes.9" target="/0/@nodes.3"/>
-    <arcs net="/0" source="/0/@nodes.3" target="/0/@nodes.5"/>
-    <arcs net="/0" source="/0/@nodes.11" target="/0/@nodes.9"/>
-    <arcs net="/0" source="/0/@nodes.18" target="/0/@nodes.4"/>
-    <arcs net="/0" source="/0/@nodes.7" target="/0/@nodes.1"/>
-    <arcs net="/0" source="/0/@nodes.6" target="/0/@nodes.18"/>
-    <arcs net="/0" source="/0/@nodes.23" target="/0/@nodes.19"/>
-    <arcs net="/0" source="/0/@nodes.17" target="/0/@nodes.10"/>
-    <arcs net="/0" source="/0/@nodes.13" target="/0/@nodes.0"/>
-    <arcs net="/0" source="/0/@nodes.0" target="/0/@nodes.13"/>
-    <arcs net="/0" source="/0/@nodes.10" target="/0/@nodes.0"/>
-    <arcs net="/0" source="/0/@nodes.0" target="/0/@nodes.2"/>
-    <arcs net="/0" source="/0/@nodes.2" target="/0/@nodes.20"/>
-    <arcs net="/0" source="/0/@nodes.13" target="/0/@nodes.14"/>
-    <arcs net="/0" source="/0/@nodes.14" target="/0/@nodes.13"/>
-    <arcs net="/0" source="/0/@nodes.4" target="/0/@nodes.14"/>
-    <arcs net="/0" source="/0/@nodes.14" target="/0/@nodes.15"/>
-    <arcs net="/0" source="/0/@nodes.15" target="/0/@nodes.5"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="Dummy tran 2 for: Dummy place for: sel1" incoming="/0/@arcs.14" outgoing="/0/@arcs.16"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="sp to t1" net="/0" incoming="/0/@arcs.0" outgoing="/0/@arcs.20"/>
+    <nodes xsi:type="se.chalmers.cse.mde2014:Transition" name="fifo1" net="/0" outgoing="/0/@arcs.17" transition_type="FIFO"/>
+    <arcs net="/0" source="/0/@nodes.11" target="/0/@nodes.24"/>
+    <arcs net="/0" source="/0/@nodes.12" target="/0/@nodes.5"/>
+    <arcs net="/0" source="/0/@nodes.14" target="/0/@nodes.6"/>
+    <arcs net="/0" source="/0/@nodes.5" target="/0/@nodes.19"/>
+    <arcs net="/0" source="/0/@nodes.1" target="/0/@nodes.14"/>
+    <arcs net="/0" source="/0/@nodes.8" target="/0/@nodes.21"/>
+    <arcs net="/0" source="/0/@nodes.1"/>
+    <arcs net="/0" source="/0/@nodes.21" target="/0/@nodes.15"/>
+    <arcs net="/0" source="/0/@nodes.6" target="/0/@nodes.13"/>
+    <arcs net="/0" source="/0/@nodes.0" target="/0/@nodes.7"/>
+    <arcs net="/0" source="/0/@nodes.9" target="/0/@nodes.25"/>
+    <arcs net="/0" source="/0/@nodes.20" target="/0/@nodes.9"/>
+    <arcs net="/0" source="/0/@nodes.13" target="/0/@nodes.8"/>
+    <arcs net="/0" source="/0/@nodes.13" target="/0/@nodes.3"/>
+    <arcs net="/0" source="/0/@nodes.19" target="/0/@nodes.23"/>
+    <arcs net="/0" source="/0/@nodes.17" target="/0/@nodes.0"/>
+    <arcs net="/0" source="/0/@nodes.23" target="/0/@nodes.10"/>
+    <arcs net="/0" source="/0/@nodes.25" target="/0/@nodes.17"/>
+    <arcs net="/0" source="/0/@nodes.15" target="/0/@nodes.9"/>
+    <arcs net="/0" source="/0/@nodes.4" target="/0/@nodes.20"/>
+    <arcs net="/0" source="/0/@nodes.24" target="/0/@nodes.12"/>
+    <arcs net="/0" source="/0/@nodes.19" target="/0/@nodes.1"/>
+    <arcs net="/0" source="/0/@nodes.3" target="/0/@nodes.4"/>
+    <arcs net="/0" source="/0/@nodes.22" target="/0/@nodes.16"/>
+    <arcs net="/0" source="/0/@nodes.16" target="/0/@nodes.22"/>
+    <arcs net="/0" source="/0/@nodes.10" target="/0/@nodes.16"/>
+    <arcs net="/0" source="/0/@nodes.16" target="/0/@nodes.18"/>
+    <arcs net="/0" source="/0/@nodes.18" target="/0/@nodes.2"/>
+    <arcs net="/0" source="/0/@nodes.2" target="/0/@nodes.17"/>
   </se.chalmers.cse.mde2014:PetriNet>
-  <se.chalmers.cse.mde2014:Arc net="/0" source="/0/@nodes.10" target="/0/@nodes.20"/>
-  <se.chalmers.cse.mde2014:Arc net="/0" source="/0/@nodes.4" target="/0/@nodes.5"/>
+  <se.chalmers.cse.mde2014:Arc net="/0" source="/0/@nodes.10" target="/0/@nodes.0"/>
 </xmi:XMI>

@@ -37,7 +37,7 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 	//Creating a writable copy of the transitions
 	var transitions := self.contains_transitions;
 	
-	log(transitions->size().toString());
+	//log(transitions->size().toString());
 	
 	//Creating a writable copy of nodes
 	var places := result.nodes;
@@ -106,73 +106,23 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 		}endif
 	}
 	};
-	
-	
-
 
 	
+//Global variable for special case selection to selection
+	var dummys1 := OrderedSet{''};
+	//	log(dummys1->size().toString()+"before");
+	//	dummys1.dump();
 	
-	//Searching for special cases on controllers
-	self.contains_controllers -> forEach(cont1){
-	self.contains_controllers -> forEach(cont2){
-		
-		if(cont1 <> cont2) then{
-			//Creating the common transitions
-			var commonTransitions := cont1.outgoing_transitions->intersection(cont2.incoming_transitions);
-			
-			//There's a match'
-			if(commonTransitions->size() <> 0) then {
-			
-				//Creating a dummy place between the two controllers
-				var place : Petrinet::Place := new Petrinet::Place();
-				
-				//Creating the arcs to connect them
-				var arc1 : Petrinet::Arc := new Petrinet::Arc();
-				var arc2 : Petrinet::Arc := new Petrinet::Arc();
-				
-				//Creating the two transitions
-				var tran1 := nodes[name = cont1.entity_id]->first();
-				var tran2 := nodes[name = cont2.entity_id]->first();
-				
-				//Populating the transitions properties
-				arc1.source := tran1;
-				arc1.target := place;
-				arc1.net := result;
-				arc2.source := place;
-				arc2.target := tran2;
-				arc2.net := result;
-				
-				//Populating the dummy place properties
-				place.name := cont1.entity_id+" to "+cont2.entity_id;
-				place.net := result;
-				place.incoming := arc1->asSet();
-				place.outgoing := arc2->asSet();
-				
-				//Adding the dummyplace to the petrinet
-				result.nodes += place;
-				
-				//Adding the arcs to the petrinet
-				result.arcs += arc1;
-				result.arcs += arc2;
-				
-				//Removing the transition already transofrmed
-				transitions := (transitions- commonTransitions)->asOrderedSet();
-				
-				//Addng incoming and outgoing arcs to the places
-				tran1.outgoing := tran1.outgoing->union(arc1->asSet());
-				tran2.incoming := tran2.incoming->union(arc2->asSet());
-				
-				
-			} endif;
-		}endif
-	}
-	};
-	
+//Global variable for special case FIFO to FIFO
+	var dummys2 := OrderedSet{''};
+	//	log(dummys2->size().toString()+"before");
+	//	dummys2.dump();	
 	
 	
 	/*
 		Find and create selection
-	*/	
+	*/
+
 	
 	self.contains_controllers -> forEach(sel) {
 		if sel.oclIsKindOf(Selection) then {
@@ -180,7 +130,7 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			var dummiplace:= new Petrinet::Place();
 			dummiplace.name := "Dummy place for: " +sel.entity_id;
 			
-			// find incoming transition in petri net and create arc between
+// find incoming transition in petri net and create arc between
 			var inc := result.nodes[name = sel.entity_id]->oclAsType(Petrinet::Transition)->first();
 			var arc := new Arc(result, inc, dummiplace);
 			
@@ -190,19 +140,26 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			result.nodes += dummiplace;
 			result.arcs += arc;
 			
-			// find number of outgoing connections and creating of dummy transitions
+// find number of outgoing connections and creating of dummy transitions
 			var i = 1;
+			//i.dump();
 			sel.outgoing_transitions -> forEach(tran) {
 				var dummitran = new Petrinet::Transition();
 				dummitran.name := "Dummy tran "+i.toString()+" for: " + dummiplace.name;
+				//	dummitran.name.dump();
+				
+//adding name of transitions to the global variable
+				dummys1 := dummys1->append(dummitran.name);
+				//	log(dummys1->size().toString()+"after");
+				//	dummys1.dump();
 				
 				var incarc = new Arc(result, dummiplace, dummitran);
 				dummitran.incoming := incarc;
 				
-				// Find outgoing entities
+// Find outgoing entities
 				self.subobjectsOfKind(Entity) -> forEach(ent) {
 					
-					// Found a match
+// Found a match
 					if ent.oclAsType(Entity).incoming_transitions->asOrderedSet()->includes(tran) then {
 						var place := result.nodes[name = ent.oclAsType(Entity).entity_id]->oclAsType(Petrinet::Place)->first();
 						var outarc := new Arc(result, dummitran, place);
@@ -217,14 +174,17 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 				result.nodes += dummitran;
 				result.arcs += incarc;
 				i := i+1;
+				//i.dump();
 			};
 			
-			log(transitions->size().toString());
+			//	log(transitions->size().toString());
 			transitions := (transitions - sel.outgoing_transitions)->asOrderedSet();
-			log(transitions->size().toString());
+			//	log(transitions->size().toString());
 		}
 		endif;
 	};
+	
+	
 	
 	
 	/*
@@ -235,8 +195,12 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			
 			var dummyplace := new Place();
 			dummyplace.name := "Dummy incplace for "+fifo.entity_id;
-
 			dummyplace.net := result;
+			
+//adding name of place to the global variable
+			dummys2 := dummys2->append(dummyplace.name);
+			// log(dummys2->size().toString()+"after");
+			// dummys2.dump();
 			
 			result.nodes += dummyplace;
 			
@@ -253,7 +217,7 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 				
 				self.subobjectsOfKind(Task) -> forEach(task) {
 					
-					// found match
+// found match
 					if task.oclAsType(Task).outgoing_transitions->asOrderedSet()->includes(tran) and
 						task.oclAsType(Task).is_associated_to->size()=0
 						
@@ -264,6 +228,7 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 						dummytran.net := result;
 						result.nodes += dummytran;
 						
+												
 						var place := result.nodes[name = task.oclAsType(Task).entity_id]->oclAsType(Petrinet::Place)->first();
 						var inarc := new Arc(result, place, dummytran);
 						var outarc := new Arc(result, dummytran, dummyplace);
@@ -285,6 +250,150 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 			};
 			
 		} endif;
+	};
+	
+//Searching for special cases on controllers
+	self.contains_controllers -> forEach(cont1){
+	
+	//calculator of dummy transitions for selection	
+	var i = 1;
+	i.dump();	
+	
+	self.contains_controllers -> forEach(cont2){
+		
+		if(cont1 <> cont2) then{
+			//Creating the common transitions
+			var commonTransitions := cont1.outgoing_transitions->intersection(cont2.incoming_transitions);
+			
+			//There's a match'
+			if(commonTransitions->size() <> 0) then {
+			
+				
+				
+				//Creating the two transitions
+				var tran1 := nodes[name = cont1.entity_id]->first();
+				var tran2 := nodes[name = cont2.entity_id]->first();
+				
+				
+				//Special case with two Selections
+				if tran1.oclAsType(Petrinet::Transition).transition_type = Petrinet::Type::Selection
+				//	and tran2.oclAsType(Petrinet::Transition).transition_type = Petrinet::Type::Selection
+															
+					then {
+							
+							//selecting the name of the transition for connection																					
+							var onedummy := dummys1->selectOne(dt | dt = "Dummy tran "+i.toString()+" for: Dummy place for: "+cont1.entity_id);
+							onedummy.dump();
+							
+							//Creating a dummy place between the two controllers
+							var place : Petrinet::Place := new Petrinet::Place();
+				
+							//Creating the arcs to connect them
+							var arc1 : Petrinet::Arc := new Petrinet::Arc();
+							var arc2 : Petrinet::Arc := new Petrinet::Arc();
+															
+							//Populating the transitions properties
+							arc1.source := nodes[name = onedummy]->first();
+							arc1.target := place;
+							arc1.net := result;
+														
+							arc2.source := place;
+							arc2.target := tran2;
+							arc2.net := result;
+							
+							//Populating the dummy place properties
+							place.name := cont1.entity_id+" to "+cont2.entity_id;
+							place.net := result;
+							place.incoming := arc1->asSet();
+							place.outgoing := arc2->asSet();
+							
+							//Adding the dummyplace to the petrinet
+							result.nodes += place;
+							
+							//Adding the arcs to the petrinet
+							result.arcs += arc1;
+							result.arcs += arc2;
+							
+							//Removing the transition already transofrmed
+							transitions := (transitions- commonTransitions)->asOrderedSet();
+							
+							//Addng incoming and outgoing arcs to the places
+							tran1.outgoing := tran1.outgoing->union(arc1->asSet());
+							tran2.incoming := tran2.incoming->union(arc2->asSet());		
+							
+							//calculator of dummy transitions for selection	
+							i := i+1;
+							i.dump();	
+									
+					}
+					
+					//Special case with two FIFO
+					else if tran1.oclAsType(Petrinet::Transition).transition_type = Petrinet::Type::FIFO
+					and	tran2.oclAsType(Petrinet::Transition).transition_type = Petrinet::Type::FIFO
+						then {
+							//Creating the arcs to connect them
+							var arc1 : Petrinet::Arc := new Petrinet::Arc();
+							
+							//selecting the name of the place for connection
+							var onedummy := dummys2->selectOne(dt | dt = "Dummy incplace for "+cont2.entity_id);
+							//onedummy.dump();
+							
+							//Populating the transitions properties
+							arc1.source := tran1;
+							arc1.target := nodes[name = onedummy]->first();
+							arc1.net := result;
+							//Adding the arcs to the petrinet
+							result.arcs += arc1;
+							//Removing the transition already transofrmed
+							transitions := (transitions- commonTransitions)->asOrderedSet();
+							//Addng incoming and outgoing arcs to the places
+							tran1.outgoing := tran1.outgoing->union(arc1->asSet());
+						}
+						
+					//Normal special case
+					else {
+							
+							//Creating a dummy place between the two controllers
+							var place : Petrinet::Place := new Petrinet::Place();
+				
+							//Creating the arcs to connect them
+							var arc1 : Petrinet::Arc := new Petrinet::Arc();
+							var arc2 : Petrinet::Arc := new Petrinet::Arc();
+							
+							//Populating the transitions properties
+							arc1.source := tran1;
+							arc1.target := place;
+							arc1.net := result;
+							
+							arc2.source := place;
+							arc2.target := tran2;
+							arc2.net := result;
+				
+							//Populating the dummy place properties
+							place.name := cont1.entity_id+" to "+cont2.entity_id;
+							place.net := result;
+							place.incoming := arc1->asSet();
+							place.outgoing := arc2->asSet();
+							
+							//Adding the dummyplace to the petrinet
+							result.nodes += place;
+							
+							//Adding the arcs to the petrinet
+							result.arcs += arc1;
+							result.arcs += arc2;
+							
+							//Removing the transition already transofrmed
+							transitions := (transitions- commonTransitions)->asOrderedSet();
+							
+							//Addng incoming and outgoing arcs to the places
+							tran1.outgoing := tran1.outgoing->union(arc1->asSet());
+							tran2.incoming := tran2.incoming->union(arc2->asSet());
+					}
+					endif endif;
+						
+			} endif;
+		}endif
+	}
 	};
 	
 	/**
@@ -409,6 +518,8 @@ mapping Workflow::Case::case2petriNet() : PetriNet {
 	};
 }
 
+
+
 mapping Task::task2place(in globalNet : PetriNet) : Petrinet::Place {
 	result.name := self.entity_id;
 	result.net := globalNet;
@@ -491,10 +602,10 @@ mapping Resource::res2Place( net: PetriNet, workflow: Case): Petrinet::Place {
 	nextTransition.incoming := result.incoming->union(arc1->asSet());
 	nextTransition.outgoing := result.outgoing->union(arc2->asSet());
 	
-	log(net.arcs->size().toString());
+//	log(net.arcs->size().toString());
 	arcs := arcs->union(arc1->asSet())->asOrderedSet();
 	arcs += arc2;
-	log(net.arcs->size().toString());
+//	log(net.arcs->size().toString());
 	
 	
 	//populating the resource place
